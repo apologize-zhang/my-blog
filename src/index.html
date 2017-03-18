@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>zhangh.net</title>
+    <meta name="viewport" content="width=device-width">
+
+</head>
+<body ng-app="myApp">
+
+    <!--顶部导航栏-->
+    <div style="height: 60px" ng-include="'home/nav.html'"></div>
+
+    <!--中间mainview-->
+    <div class="main-view container" ng-class="{'margin-auto': showSlide == false}">
+        <ui-view name="main" ></ui-view>
+    </div>
+
+
+    <!--基础库-->
+    <script src="../lib/jquery/dist/jquery.min.js"></script>
+    <script src="../lib/angular/angular.js"></script>
+    <script src="../lib/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="../lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../lib/angular-bootstrap/ui-bootstrap.js"></script>
+
+    <!--css-->
+    <link rel="stylesheet" href="blog-ui.css">
+
+    <link rel="stylesheet" href="../lib/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../lib/angular/angular-csp.css">
+    <link rel="stylesheet" href="../lib/angular-bootstrap/ui-bootstrap-csp.css">
+
+
+    <!--自定义的js-->
+    <script src="app.js"></script>
+    <script src="index.js"></script>
+    <script src="home/home.js"></script>
+    <script src="home/nav.controller.js"></script>
+    <script src="index.controller.js"></script>
+    <script src="home/slide.controller.js"></script>
+    <script src="home/nav.js"></script>
+    <script src="home/path/tab/list.controller.js"></script>
+    <script src="home/path/blog/blog.controller.js"></script>
+    <script src="home/path/user-center/user-center.controller.js"></script>
+
+    <!--ue编辑器-->
+    <link rel="stylesheet" href='../lib/umeditor/lib/umeditor/dist/utf8-php/themes/default/css/umeditor.css'>
+    <script src='../lib/umeditor/lib/umeditor/dist/utf8-php/umeditor.js'></script>
+    <script src='../lib/umeditor/lib/umeditor/dist/utf8-php/umeditor.config.js'></script>
+    <script src='../lib/umeditor/src/meta.umeditor.js'></script>
+
+</body>
+</html>
