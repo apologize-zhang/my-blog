@@ -3,5 +3,9 @@
 angular.module('myApp')
     .controller('BlogController', function($scope) {
 
-        console.log(1);
+        $(document).ready(function () {
+            setTimeout(function() {
+                SyntaxHighlighter.all();
+            }, 200);
+        })
     });

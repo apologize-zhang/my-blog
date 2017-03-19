@@ -54,11 +54,6 @@ li {
     width: 80% !important;
 }
 
-.margin-auto {
-    float: left !important;
-    width: 100% !important;
-}
-
 .no-padding-right {padding-right: 0 !important;}
 .no-padding-left {padding-left: 0 !important;}
 
@@ -77,6 +72,8 @@ li {
 .bor-bot-blue {border-bottom: 2px solid #acd6ff}
 .bor-bot-gray {border-bottom: 1px dashed #cccccc}
 
+.color-blue {color: #2894ff}
+
 /* 左边栏 */
 .slide {
     height: 800px;
@@ -86,30 +83,6 @@ li {
     .slide {
         display: none;
     }
-}
-
-/* 浮动开关 */
-.float-bar {
-    width: 10px;
-    height: 100px;
-    top: 300px;
-    margin-left: -10px;
-    background-color: #cccccc;
-    opacity: 0.4;
-    z-index: 9999;
-    float: right;
-    /*margin-top: 5px;*/
-    position: fixed;
-}
-.float-bar:hover {
-    box-shadow: 0 0 5px #A1CBEB;
-    opacity: 0.6;
-}
-.slide-close {
-    border-radius: 1px 10000px 10000px 1px;
-}
-.slide-open {
-    border-radius: 100px 1px 1px 100px;
 }
 
 .margin-rigth-0 {margin-right: 0 !important;}
@@ -132,11 +105,13 @@ li {
     display: inline-block !important;
 }
 
+.simditor-body {min-height: 600px !important;}
+
 
 /* 文章页面 */
 /*圆形*/
 .circel {
-    border-radius: 50%;
+    border-radius: 50% !important;
 }
 
 .user-card {
@@ -151,7 +126,9 @@ li {
 
 /* 文章正文*/
 .article-box {
-    padding: 10px;
+    padding: 5%;
+    width: 80%;
+    margin: auto;
     box-shadow: 3px 1px 10px #cccccc;
     border-left: none;
 }

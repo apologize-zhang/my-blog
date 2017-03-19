@@ -1,17 +1,18 @@
 /**
  * Created by admin on 2017/2/12.
  */
-angular.module('myApp', ['ui.router', 'meta.umeditor'])
+angular.module('myApp', ['ui.router'])
     .run(function ($rootScope, $state) {
 
         $state.go('home');
-
-        $rootScope.showSlide = true;
 
         $rootScope.$on('$stateChangeSuccess',  function(event, toState, toParams, fromState, fromParams) {
             console.log(toState);
         });
 
+        $rootScope.scrollTop = function() {
+            $('body').animate({scrollTop: 0}, 500);
+        }
     })
     .factory('ConstantService', function() {
         return {

@@ -7,14 +7,14 @@ angular.module('myApp')
                 parent: 'home',
                 views: {
                     'main@': {
-                        templateUrl: 'home/path/tab/list.html',
+                        templateUrl: 'home/path/list/list.html',
                         controller: 'ListController'
                     }
                 },
                 resolve: {}
             })
             .state('blog', {
-                url: ':id/blog',
+                url: '{id: [0-9]+}/blog',
                 parent: 'home',
                 views: {
                     'main@': {
@@ -34,4 +34,15 @@ angular.module('myApp')
                     }
                 }
             })
+            .state('new-blog', {
+                url: 'new/blog',
+                parent: 'home',
+                views: {
+                    'main@': {
+                        templateUrl: 'home/path/blog/input/blog.input.html',
+                        controller: 'BlogCreateController'
+                    }
+                }
+            })
+
     });

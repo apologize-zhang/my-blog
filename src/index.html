@@ -12,10 +12,53 @@
     <div style="height: 60px" ng-include="'home/nav.html'"></div>
 
     <!--中间mainview-->
-    <div class="main-view container" ng-class="{'margin-auto': showSlide == false}">
+    <div class="main-view container">
         <ui-view name="main" ></ui-view>
     </div>
 
+    <aside style="width: 40px; float: right; position: fixed; bottom: 20px; right: 18px; z-index: 9999">
+        <div title="登录" class="btn btn-link btn-lg" style="width: 40px; height: 40px;">
+            <i style="margin-left: -5px" class="glyphicon glyphicon-user"></i>
+        </div>
+
+        <div title="写博客" ui-sref="new-blog()" class="btn btn-link btn-lg" style="width: 40px; height: 40px;">
+            <i style="margin-left: -5px" class="glyphicon glyphicon-edit"></i>
+        </div>
+
+        <div title="回到顶部" ng-click="scrollTop()" class="btn btn-link btn-lg" style="width: 40px; height: 40px">
+            <i style="margin-left: -5px" class="glyphicon glyphicon-chevron-up"></i>
+        </div>
+    </aside>
+
+
+    <footer style="height: 100px; margin-top: 50px;">
+        <div class="container" style="border-top: 2px solid rgba(204, 204, 204, 0.36); padding-top: 10px">
+            <div class="text-left col-lg-4 margin-left-sm">
+                <span style="color: #9b9b9b; font-size: .75rem;">
+                    Copyright © 2016 - 2017 zhangh.net 保留所有权利。<br>
+                    联系邮箱 <a href="mailto:zhanghuan@zhangh.net ">zhanghuan@zhangh.net</a><br>
+                    赣ICP备16005964号
+                </span>
+            </div>
+            <div class="text-left col-lg-4">
+                <span style="color: #9b9b9b; font-size: .75rem;">
+                    友情链接<br>
+                    <a href="http://lihang.info" target="_blank">lihang.info</a>
+                </span>
+            </div>
+
+            <div class="text-left col-lg-2">
+                <span style="color: #9b9b9b; font-size: .75rem;">
+                    关注开发者<br>
+                        <a href="https://github.com/apologize-zhang" target="_blank">
+                            <img src="home/img/footer_ico-github.png" style="width: 24px; opacity: .46;"/>
+                        </a>
+
+                </span>
+            </div>
+        </div>
+
+    </footer>
 
     <!--基础库-->
     <script src="../lib/jquery/dist/jquery.min.js"></script>
@@ -40,15 +83,26 @@
     <script src="index.controller.js"></script>
     <script src="home/slide.controller.js"></script>
     <script src="home/nav.js"></script>
-    <script src="home/path/tab/list.controller.js"></script>
+    <script src="home/path/list/list.controller.js"></script>
     <script src="home/path/blog/blog.controller.js"></script>
+    <script src="home/path/blog/input/blog.create.controller.js"></script>
+    <script src="home/path/blog/input/blog.edit.controller.js"></script>
+    <script src="home/path/blog/input/edit.directive.js"></script>
     <script src="home/path/user-center/user-center.controller.js"></script>
 
-    <!--ue编辑器-->
-    <link rel="stylesheet" href='../lib/umeditor/lib/umeditor/dist/utf8-php/themes/default/css/umeditor.css'>
-    <script src='../lib/umeditor/lib/umeditor/dist/utf8-php/umeditor.js'></script>
-    <script src='../lib/umeditor/lib/umeditor/dist/utf8-php/umeditor.config.js'></script>
-    <script src='../lib/umeditor/src/meta.umeditor.js'></script>
+    <!--编辑器-->
+    <link rel="stylesheet" type="text/css" href="../lib/simditor/styles/simditor.css" />
+
+    <script type="text/javascript" src="../lib/simditor/site/assets/scripts/module.js"></script>
+    <script type="text/javascript" src="../lib/simditor/site/assets/scripts/hotkeys.js"></script>
+    <script type="text/javascript" src="../lib/simditor/site/assets/scripts/uploader.js"></script>
+    <script type="text/javascript" src="../lib/simditor/site/assets/scripts/simditor.js"></script>
+    <script type="text/javascript" src="../lib/simditor/site/assets/scripts/simditor-mark.js"></script>
+
+    <!--代码高亮-->
+    <script type="text/javascript" src="../lib/syntaxhighlighter_3.0.83/scripts/shCore.js"></script>
+    <script type="text/javascript" src="../lib/syntaxhighlighter_3.0.83/scripts/shBrushJScript.js"></script>
+    <link rel="stylesheet" href="../lib/syntaxhighlighter_3.0.83/styles/shCoreDefault.css">
 
 </body>
 </html>

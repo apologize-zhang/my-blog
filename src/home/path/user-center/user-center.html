@@ -1,17 +1,48 @@
+<div>
 <div style="height: 100%; width: 15%; padding-top: 50px;" class="float-left">
 
-    <ul style="line-height: 40px; padding-right: 10px">
-        <li class="bor-bot-blue cursor-pointer"><strong>个人资料</strong></li>
-        <li class="cursor-pointer"><strong>个人资料</strong></li>
-        <li class="cursor-pointer"><strong>个人资料</strong></li>
-        <li class="cursor-pointer"><strong>个人资料</strong></li>
-        <li class="cursor-pointer"><strong>个人资料</strong></li>
-        <li class="cursor-pointer"><strong>个人资料</strong></li>
+    <ul style="line-height: 40px; padding-right: 10px" ng-init="card = 'info'">
+        <li class="cursor-pointer"
+            ng-class="{'color-blue': card == 'info'}"
+            ng-click="card = 'info'">
+            <i class="glyphicon glyphicon-user"></i>
+            <strong>个人资料</strong>
+        </li>
+        <li class="cursor-pointer"
+            ng-class="{'color-blue': card == 'blog'}"
+            ng-click="card = 'blog'">
+            <i class="glyphicon glyphicon-list-alt"></i>
+            <strong>文章管理</strong>
+        </li>
+        <li class="cursor-pointer"
+            ng-class="{'color-blue': card == 'discuss'}"
+            ng-click="card = 'discuss'">
+            <i class="glyphicon glyphicon-stats"></i>
+            <strong>评论列表</strong>
+        </li>
+        <li class="cursor-pointer"
+            ng-class="{'color-blue': card == 'classify'}"
+            ng-click="card = 'classify'">
+            <i class="glyphicon glyphicon-paperclip"></i>
+            <strong>分类管理</strong>
+        </li>
+        <li class="cursor-pointer"
+            ng-class="{'color-blue': card == 'message'}"
+            ng-click="card = 'message'">
+            <i class="glyphicon glyphicon-comment"></i>
+            <strong>查看留言</strong>
+        </li>
+        <li class="cursor-pointer"
+            ng-class="{'color-blue': card == 'link'}"
+            ng-click="card = 'link'">
+            <i class="glyphicon glyphicon-link"></i>
+            <strong>友情链接</strong>
+        </li>
     </ul>
 </div>
 
 
 <div style="width: 80%; height: 100%; padding: 10px; padding-bottom: 100px; box-shadow: 1px 0 10px #dddddd" class="float-left">
-    <!--<div ng-include="'home/path/user-center/info-card.html'"></div>-->
-    <div ng-include="'home/path/user-center/blog-card.html'"></div>
+    <div ng-if="card == 'info'" ng-include="'home/path/user-center/info-card.html'"></div>
+    <div ng-if="card == 'blog'" ng-include="'home/path/user-center/blog-card.html'"></div>
 </div>
