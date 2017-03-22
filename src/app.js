@@ -1,7 +1,7 @@
 /**
  * Created by admin on 2017/2/12.
  */
-angular.module('myApp', ['ui.router'])
+angular.module('myApp', ['ui.router', 'ui.bootstrap', 'ngAnimate', 'ngResource'])
     .run(function ($rootScope, $state) {
 
         $state.go('home');
@@ -16,17 +16,7 @@ angular.module('myApp', ['ui.router'])
     })
     .factory('ConstantService', function() {
         return {
+            BLOG: 'http://localhost:8099/blog'
         }
-    })
-    .value('metaUmeditorConfig', {
-        imageUrl: '图片url',
-        toolbar: [
-            'source | undo redo | bold italic underline strikethrough | superscript subscript | forecolor backcolor | removeformat |',
-            'insertorderedlist insertunorderedlist | paragraph | fontfamily fontsize',
-            '| justifyleft justifycenter justifyright justifyjustify |',
-            'link unlink | image video ',
-            '| horizontal preview', 'drafts', 'formula'
-        ],
-        initialFrameWidth: 900
     })
 ;
