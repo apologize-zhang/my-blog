@@ -59,13 +59,21 @@ li {
 
 .padding-left-sm {padding-left: 5%}
 .margin-left-sm {margin-left: 5%}
+.margin-left-lg {margin-left: 20% !important;}
 
 .padding-right-sm {padding-right: 5%}
 .margin-right-sm {margin-right: 5%}
+.margin-right-lg {margin-right: 20% !important;}
 
+.margin-top-sm {margin-top: 5% !important;}
+.margin-top-md {margin-top: 10% !important;}
+
+.text-medium {font-size: medium;}
 .display-inline-block {display: inline-block}
 
 .overflow-y-auto {overflow-y: auto}
+
+.line-height-md {line-height: 34px !important;}
 
 .bor-left-bot-blue {border-left: 2px solid #acd6ff}
 

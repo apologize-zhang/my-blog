@@ -44,5 +44,15 @@ angular.module('myApp')
                     }
                 }
             })
+            .state('registe', {
+                url: 'registe',
+                parent: 'home',
+                views: {
+                    'main@': {
+                        templateUrl: 'home/path/user/registe.html',
+                        controller: 'RegisteController'
+                    }
+                }
+            })
 
     });
