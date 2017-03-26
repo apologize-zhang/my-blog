@@ -49,10 +49,13 @@ li {
 .wid-25 {
     width: 25% !important;
 }
+.wid-16 { width: 16% !important; }
 
-.wid-80 {
-    width: 80% !important;
-}
+.wid-sm { width: 10% !important; }
+.wid-md { width: 60% !important; }
+.wid-70 { width: 70% !important; }
+.wid-80 { width: 80% !important; }
+.mar-auto { margin: auto !important; }
 
 .no-padding-right {padding-right: 0 !important;}
 .no-padding-left {padding-left: 0 !important;}
@@ -61,6 +64,7 @@ li {
 .margin-left-sm {margin-left: 5%}
 .margin-left-lg {margin-left: 20% !important;}
 
+.padding-right-ls {padding-right: 2%}
 .padding-right-sm {padding-right: 5%}
 .margin-right-sm {margin-right: 5%}
 .margin-right-lg {margin-right: 20% !important;}
@@ -69,7 +73,8 @@ li {
 .margin-top-md {margin-top: 10% !important;}
 
 .text-medium {font-size: medium;}
-.display-inline-block {display: inline-block}
+.display-inline-block {display: inline-block;}
+.display-none {display: none !important;}
 
 .overflow-y-auto {overflow-y: auto}
 
@@ -79,6 +84,7 @@ li {
 
 .bor-bot-blue {border-bottom: 2px solid #acd6ff}
 .bor-bot-gray {border-bottom: 1px dashed #cccccc}
+.bor-solid-gray {border: 1px solid #cccccc !important;}
 
 .color-blue {color: #2894ff}
 

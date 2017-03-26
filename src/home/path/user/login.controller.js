@@ -5,6 +5,9 @@ angular.module('myApp')
                                              $log,
                                              $state,
                                              $uibModalInstance,
+                                             ResponseUtil,
+                                             StorageService,
+                                             toastr,
                                              UserService) {
 
 
@@ -17,14 +20,18 @@ angular.module('myApp')
 
         $scope.login = function() {
 
-
             UserService.login(
                 {
-                    name: 'aaa',
-                    password: '123'
+                    email: $scope.user.email,
+                    password: $scope.user.password
                 },
-                function success(resposne) {
-
+                function success(response) {
+                    if(ResponseUtil.validate(response)) {
+                        StorageService.saveToken(response.data);
+                        toastr.success('欢迎回来', '登录成功');
+                    } else {
+                        toastr.error('请检查邮箱或密码是否填写正确', '登录失败');
+                    }
                 },
                 function error(reason) {
                     $log.error(reason);

@@ -6,6 +6,9 @@ angular.module('myApp')
             'get': {
                 method: 'GET'
             },
+            'registe': {
+                method: 'POST'
+            },
             'login': {
                 url: ConstantService.BLOG + '/user/login',
                 method: 'POST'

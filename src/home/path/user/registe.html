@@ -11,14 +11,100 @@
     </hgroup>
 
     <form name="form" class="form-horizontal margin-top-sm" novalidate>
-        <div class="row line-height-md">
-            <div class="form-group form-input margin-left-lg">
+        <div class="wid-70 mar-auto line-height-md" style="height: 100px;">
+
+            <div class="row margin-top-sm">
                 <span class="col-lg-2 text-info text-medium">邮箱</span>
 
-                <div class="col-lg-6">
-                    <input class="form-control col-grey-duck" type="text">
+                <div class="col-lg-8">
+                    <input class="form-control col-grey-duck" ng-model="user.email" type="text">
+                </div>
+
+                <small class="glyphicon glyphicon-exclamation-sign line-height-md float-left padding-right-ls"
+                       tooltip-append-to-body="true"
+                       tooltip-placement="top"
+                       uib-tooltip="是否所有人可见">
+                </small>
+
+                <switch ng-model="user.showEmail" class="switch small line-height-md col-lg-2" style="margin-top: 6px"></switch>
+
+            </div>
+
+            <div class="row margin-top-sm">
+                <span class="col-lg-2 text-info text-medium">昵称</span>
+
+                <div class="col-lg-8">
+                    <input class="form-control col-grey-duck" ng-model="user.name" type="text">
                 </div>
             </div>
+
+            <div class="row margin-top-sm">
+                <span class="col-lg-2 text-info text-medium">性别</span>
+
+                <div class="col-lg-2">
+                    <input type="radio" id="man" name="gender" value="man" ng-model="user.gender">
+                    <label for="man" class="margin-left-lg">男</label>
+                </div>
+                <div class="col-lg-2">
+                    <input type="radio" id="woman" name="gender" value="woman" ng-model="user.gender">
+                    <label for="woman" class="margin-left-lg">女</label>
+                </div>
+            </div>
+
+            <div class="row margin-top-sm">
+                <span class="col-lg-2 text-info text-medium">年龄</span>
+
+                <div class="col-lg-4">
+                    <input class="form-control col-grey-duck" ng-model="user.age" type="number">
+                </div>
+            </div>
+
+            <div class="row margin-top-sm">
+                <span class="col-lg-2 text-info text-medium">密码</span>
+
+                <div class="col-lg-8">
+                    <input class="form-control col-grey-duck" ng-model="user.password" type="password">
+                </div>
+
+            </div>
+
+            <div class="row margin-top-sm">
+                <span class="col-lg-2 text-info text-medium">确认密码</span>
+
+                <div class="col-lg-8">
+                    <input class="form-control col-grey-duck" type="password">
+                </div>
+
+            </div>
+
+            <div class="row margin-top-sm line-height-md">
+                <span class="col-lg-2 text-info text-medium margin-top-sm">头像设置</span>
+
+                <div class="col-lg-3  margin-left-sm">
+                    <img ng-if="imgUrl != null" ng-src="{{imgUrl}}" style="width: 80px; height: 80px;" class="circel mar-auto">
+                    <img ng-if="imgUrl == null" src="img.jpg" style="width: 80px; height: 80px;" class="circel">
+                </div>
+
+                <div class="col-lg-3 margin-top-sm">
+                    <label class="btn btn-white btn-xs bor-solid-gray" for="file">上传头像</label>
+                    <input type="file" class="display-none" id="file" name="file" nv-file-select uploader="uploader.instance">
+                </div>
+
+            </div>
+
+            <div class="row margin-top-sm">
+                <span class="col-lg-2 text-info text-medium">个性签名</span>
+
+                <div class="col-lg-8">
+                    <input class="form-control col-grey-duck" ng-model="user.sign" type="text">
+                </div>
+            </div>
+
+            <div class="row text-center margin-top-sm">
+                <button type="button" ng-click="registe()" class="btn btn-primary wid-16">确认</button>
+                <button type="button" ng-click="cancel()" class="btn btn-white wid-16 margin-left-sm">取消</button>
+            </div>
+
         </div>
 
     </form>
