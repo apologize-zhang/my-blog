@@ -29,6 +29,11 @@ angular.module('myApp')
                     if(ResponseUtil.validate(response)) {
                         StorageService.saveToken(response.data);
                         toastr.success('欢迎回来', '登录成功');
+
+                        StorageService.saveToken(response.data);
+
+                        $uibModalInstance.close(null);
+
                     } else {
                         toastr.error('请检查邮箱或密码是否填写正确', '登录失败');
                     }
@@ -37,7 +42,6 @@ angular.module('myApp')
                     $log.error(reason);
                 }
             )
-
         };
 
 

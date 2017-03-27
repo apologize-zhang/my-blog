@@ -2,7 +2,7 @@
 
 angular.module('myApp')
     .service('UserService', function ($resource, ConstantService) {
-        return $resource(ConstantService.BLOG + '/api/user/:id', {}, {
+        return $resource(ConstantService.BLOG + '/user/:id', {}, {
             'get': {
                 method: 'GET'
             },

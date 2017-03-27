@@ -23,7 +23,12 @@ angular.module('myApp')
             UserService.registe(
                 $scope.user,
                 function success(response) {
-
+                    if(ResponseUtil.validate(response)) {
+                        StorageService.saveToken(response.data);
+                        toastr.success('', '注册成功');
+                    } else {
+                        toastr.error('注册失败', response.message);
+                    }
                 },
                 function error(reason) {
                     $log.error(reason);
