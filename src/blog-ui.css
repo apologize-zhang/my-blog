@@ -50,7 +50,7 @@ li {
     width: 25% !important;
 }
 .wid-16 { width: 16% !important; }
-
+.wid-30 {width: 30% !important; }
 .wid-sm { width: 10% !important; }
 .wid-md { width: 60% !important; }
 .wid-70 { width: 70% !important; }
@@ -79,12 +79,16 @@ li {
 .overflow-y-auto {overflow-y: auto}
 
 .line-height-md {line-height: 34px !important;}
+.line-height-lg {line-height: 60px !important;}
 
 .bor-left-bot-blue {border-left: 2px solid #acd6ff}
 
 .bor-bot-blue {border-bottom: 2px solid #acd6ff}
 .bor-bot-gray {border-bottom: 1px dashed #cccccc}
 .bor-solid-gray {border: 1px solid #cccccc !important;}
+
+
+.switch-active {border-bottom: 2px solid #acd6ff; color: #337AB7}
 
 .color-blue {color: #2894ff}
 

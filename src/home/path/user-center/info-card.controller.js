@@ -1,28 +1,56 @@
 'use strict';
 
 angular.module('myApp')
-    .controller('InfoCardController', function ($scope, ConstantService) {
+    .controller('InfoCardController', function ($scope, UserService, ResponseUtil, UploadHelper) {
 
-        $scope.navs = [
+
+        $scope.mode = 'read';
+
+        $scope.uploader = UploadHelper.createUploader($scope);
+        $scope.uploader.init();
+
+        UserService.get(
             {
-                name: 'Java',
-                isParent: true,
-                children: [
-                    {
-                        id: 1,
-                        name: 'Spring'
-                    },
-                    {
-                        id: 2,
-                        name: 'Maven'
-                    }
-                ]
+                id: 1
             },
-            {
-                id: 3,
-                name: 'JavaScript',
-                isParent: false
+            function success(response) {
+                if (ResponseUtil.validate(response)) {
+                    $scope.user = response.data;
+                }
             }
-        ]
+        );
 
+        $scope.switchMode = function() {
+            if($scope.mode == 'edit') {
+                $scope.mode = 'read';
+            } else {
+                $scope.mode = 'edit';
+                $scope.imgUrl = $scope.user.img;
+                $scope.editUser = angular.copy($scope.user);
+            }
+        };
+
+
+        $scope.cancel = function() {
+
+        };
+
+
+        $scope.save = function() {
+
+            $scope.editUser.img = $scope.imgUrl;
+
+            UserService.update(
+                {
+                    token: '123'
+                },
+                $scope.editUser,
+                function success(response) {
+                    if (ResponseUtil.validate(response)) {
+                        $scope.user = response.data;
+                        $scope.mode = 'read';
+                    }
+                }
+            );
+        };
     });

@@ -3,8 +3,22 @@
 angular.module('myApp')
 
     .controller('IndexController', function ($scope,
-                                             $uibModal) {
+                                             $uibModal,
+                                             ResponseUtil,
+                                             StorageService,
+                                             UserService) {
 
+
+        $scope.loginUser = null;
+
+        $scope.user = null;
+
+        UserService.gerCurrentUser(
+            {token: StorageService.getToken()},
+            function success() {
+
+            }
+        );
 
         // 登录
         $scope.login = function () {
@@ -14,9 +28,7 @@ angular.module('myApp')
                 templateUrl: 'home/path/user/login.html',
                 controller: 'LoginController',
 
-                resolve: {
-
-                }
+                resolve: {}
             }).result.then(
                 function success(result) {
 

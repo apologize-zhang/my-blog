@@ -11,6 +11,11 @@ angular.module('myApp')
                 sessionStorage.setItem('_token', token);
             },
 
+            // 获取token
+            getToken: function() {
+                return sessionStorage.getItem('_token');
+            },
+
             // 清除一条记录
             removeToken: function () {
                 sessionStorage.removeItem('_token');

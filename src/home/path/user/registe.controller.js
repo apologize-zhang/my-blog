@@ -12,7 +12,7 @@ angular.module('myApp')
         $scope.uploader.init();
 
         $scope.user = {
-            gender: 'man'
+            gender: '1'
         };
 
         // 注册

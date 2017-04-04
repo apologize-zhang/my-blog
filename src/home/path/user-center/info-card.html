@@ -1,72 +1,120 @@
 <!--资料-->
 <div style="width: 90%; margin: auto">
     <h4 class="display-inline-block float-left text-info">我的资料卡</h4>
-    <table style="line-height: 40px; width: 100%">
-        <tr style="border-bottom: 1px dashed #cccccc">
-            <td class="col-lg-4">昵称</td>
-            <td class="col-lg-7">威震天
-                <small class="cursor-pointer padding-left-sm glyphicon glyphicon-pencil"></small>
-            </td>
-            <td class="col-lg-1"></td>
-        </tr>
+    <i title="编辑" ng-if="mode == 'read'" ng-click="switchMode()"
+       class="line-height-md padding-left-sm cursor-pointer fa fa-pencil" aria-hidden="true"></i>
+    <i title="放弃" ng-if="mode == 'edit'" ng-click="switchMode()"
+       class="line-height-md padding-left-sm cursor-pointer fa fa-times" aria-hidden="true"></i>
+    <form name="form">
+        <table style="line-height: 40px; width: 100%">
+            <tr style="border-bottom: 1px dashed #cccccc">
+                <td class="col-lg-3">昵称</td>
+                <td class="col-lg-7" ng-if="mode == 'read'">{{user.name}}</td>
+                <td class="col-lg-7" ng-if="mode == 'edit'">
+                    <input class="input-sm input-radius form-control pad-left-sm" ng-model="editUser.name" required type="text">
+                </td>
+            </tr>
 
-        <tr class="bor-bot-gray">
-            <td class="col-lg-4">个性签名</td>
-            <td class="col-lg-7">宜春实验中学中学初一扛把子</td>
-            <td class="col-lg-1"></td>
-        </tr>
+            <tr class="bor-bot-gray">
+                <td class="col-lg-3">个性签名</td>
+                <td class="col-lg-7" ng-if="mode == 'read'">{{user.sign}}</td>
+                <td class="col-lg-7" ng-if="mode == 'edit'">
+                    <input class="input-sm input-radius form-control pad-left-sm" ng-model="editUser.sign" type="text">
+                </td>
+            </tr>
 
-        <tr style="height: 100px" class="bor-bot-gray">
-            <td class="col-lg-4">头像</td>
-            <td class="col-lg-7">
-                <img src="img.jpg" style="width: 80px; height: 80px; margin: auto;"
-                     class="circel">
-            </td>
-            <td class="col-lg-1">
-            </td>
-        </tr>
-        <tr style="height: 100px" class="bor-bot-gray">
-            <td class="col-lg-4">首页背景</td>
-            <td class="col-lg-7">
-                <img src="img.jpg" style="height: 80px; margin: auto;">
-            </td>
-            <td class="col-lg-1"></td>
-        </tr>
-        <tr class="bor-bot-gray">
-            <td class="col-lg-4">email</td>
-            <td class="col-lg-7">1451178233@qq.com</td>
-            <td class="col-lg-2">
-                <input type="checkbox">
-            </td>
-        </tr>
-        <tr class="bor-bot-gray">
-            <td class="col-lg-4">角色</td>
-            <td class="col-lg-7">Java开发实习生</td>
-            <td class="col-lg-2">
-                <input type="checkbox">
-            </td>
-        </tr>
-        <tr class="bor-bot-gray">
-            <td class="col-lg-4">公司信息</td>
-            <td class="col-lg-7">弋关科技</td>
-            <td class="col-lg-2">
-                <input type="checkbox">
-            </td>
-        </tr>
-        <tr class="bor-bot-gray">
-            <td class="col-lg-4">github</td>
-            <td class="col-lg-7"><a href="https://github.com/apologize-zhang">apologize-zhang</a></td>
-            <td class="col-lg-1">
-                <input type="checkbox">
-            </td>
-        </tr>
-        <tr class="bor-bot-gray">
-            <td class="col-lg-4">csdn</td>
-            <td class="col-lg-7"><a href="https://github.com/apologize-zhang">张欢</a></td>
-            <td class="col-lg-1">
-                <input type="checkbox">
-            </td>
-        </tr>
+            <tr class="bor-bot-gray">
+                <td class="col-lg-3">年龄</td>
+                <td class="col-lg-7" ng-if="mode == 'read'">{{user.age}}</td>
+                <td class="col-lg-7" ng-if="mode == 'edit'">
+                    <input class="input-sm input-radius form-control pad-left-sm" ng-model="editUser.age" type="number">
+                </td>
+            </tr>
 
-    </table>
+            <tr class="bor-bot-gray">
+                <td class="col-lg-3">性别</td>
+                <td class="col-lg-7" ng-if="mode == 'read'">
+                    <span ng-if="user.gender == 0">女</span>
+                    <span ng-if="user.gender == 1">男</span>
+                </td>
+                <td class="col-lg-7" ng-if="mode == 'edit'">
+                    <div class="col-lg-2">
+                        <input type="radio" id="man" class="cursor-pointer" name="gender" value="1" ng-model="editUser.gender">
+                        <label for="man" class="margin-left-lg cursor-pointer">男</label>
+                    </div>
+                    <div class="col-lg-2">
+                        <input type="radio" id="woman" class="cursor-pointer" name="gender" value="0" ng-model="editUser.gender">
+                        <label for="woman" class="margin-left-lg cursor-pointer">女</label>
+                    </div>
+                </td>
+            </tr>
+
+            <tr style="height: 100px" class="bor-bot-gray">
+                <td class="col-lg-3">头像</td>
+                <td class="col-lg-7" ng-if="mode == 'read'">
+                    <img ng-src="{{user.img}}" style="width: 80px; height: 80px; margin: auto;"
+                         class="circel">
+                </td>
+                <td class="col-lg-7" ng-if="mode == 'edit'">
+                    <img ng-src="{{imgUrl}}" style="width: 80px; height: 80px; margin: auto;"
+                         class="circel">
+
+                    <label class="btn btn-white btn-xs bor-solid-gray margin-left-sm" for="file">上传头像</label>
+                    <input type="file" class="display-none" id="file" name="file" nv-file-select
+                           uploader="uploader.instance">
+                </td>
+            </tr>
+            <!--<tr style="height: 100px" class="bor-bot-gray">-->
+            <!--<td class="col-lg-3">首页背景</td>-->
+            <!--<td class="col-lg-7" ng-if="mode == 'read'">-->
+            <!--<img src="img.jpg" style="height: 80px; margin: auto;">-->
+            <!--</td>-->
+            <!--<td class="col-lg-1"></td>-->
+            <!--</tr>-->
+            <tr class="bor-bot-gray">
+                <td class="col-lg-3">email</td>
+                <td class="col-lg-7">{{user.email}}</td>
+            </tr>
+            <tr class="bor-bot-gray">
+                <td class="col-lg-3">角色</td>
+                <td class="col-lg-7" ng-if="mode == 'read'">{{user.part}}</td>
+                <td class="col-lg-7" ng-if="mode == 'edit'">
+                    <input class="input-sm input-radius form-control pad-left-sm" ng-model="editUser.part" type="text">
+                </td>
+            </tr>
+            <tr class="bor-bot-gray">
+                <td class="col-lg-3">公司信息</td>
+                <td class="col-lg-7" ng-if="mode == 'read'">{{user.company}}</td>
+                <td class="col-lg-7" ng-if="mode == 'edit'">
+                    <input class="input-sm input-radius form-control pad-left-sm" ng-model="editUser.company"
+                           type="text">
+                </td>
+            </tr>
+            <tr class="bor-bot-gray">
+                <td class="col-lg-3">github</td>
+                <td class="col-lg-7" ng-if="mode == 'read'"><a
+                        href="{{user.github}}">{{user.github}}</a></td>
+                <td class="col-lg-7" ng-if="mode == 'edit'">
+                    <input class="input-sm input-radius form-control pad-left-sm" ng-model="editUser.github"
+                           type="text">
+                </td>
+            </tr>
+            <!--<tr class="bor-bot-gray">-->
+            <!--<td class="col-lg-3">csdn</td>-->
+            <!--<td class="col-lg-7" ng-if="mode == 'read'"><a href="https://github.com/apologize-zhang">张欢</a></td>-->
+            <!--<td class="col-lg-7" ng-if="mode == 'edit'">-->
+            <!--<input class="input-sm input-radius form-control pad-left-sm" type="text">-->
+            <!--</td>-->
+            <!--</tr>-->
+
+            <tr class="line-height-lg" ng-if="mode == 'edit'">
+                <td class="text-center margin-top-md" colspan="3">
+                    <button ng-click="save()" class="btn btn-primary wid-sm">确认</button>
+
+                    <button ng-click="cancel()" class="btn btn-white margin-left-sm wid-sm">取消</button>
+                </td>
+            </tr>
+
+        </table>
+    </form>
 </div>

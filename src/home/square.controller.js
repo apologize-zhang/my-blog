@@ -1,14 +1,11 @@
-/**
- * Created by admin on 2017/2/12.
- */
 'use strict';
 
 angular.module('myApp')
-    .controller('navController', function ($scope, ConstantService) {
+    .controller('SquareController', function ($rootScope, UserService, ResponseUtil) {
 
-        $scope.navs = [
+        $rootScope.navs = [
             {
-                name: 'Java',
+                name: 'java',
                 isParent: true,
                 children: [
                     {
@@ -27,16 +24,4 @@ angular.module('myApp')
                 isParent: false
             }
         ]
-
     });
-
-angular.module('myApp')
-    .service('myService', function() {
-        return {
-            'log': function() {
-                console.log("log");
-            }
-        }
-
-    });
-

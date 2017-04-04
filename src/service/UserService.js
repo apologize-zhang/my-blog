@@ -9,9 +9,16 @@ angular.module('myApp')
             'registe': {
                 method: 'POST'
             },
+            'update': {
+                method: 'PUT'
+            },
             'login': {
                 url: ConstantService.BLOG + '/user/login',
                 method: 'POST'
+            },
+            'gerCurrentUser': {
+                url: ConstantService.BLOG + '/user/current',
+                method: 'GET'
             }
         });
     });

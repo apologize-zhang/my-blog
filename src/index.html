@@ -9,7 +9,7 @@
 <body ng-app="myApp" ng-controller="IndexController">
 
     <!--顶部导航栏-->
-    <div style="height: 60px" ng-include="'home/nav.html'"></div>
+    <div style="height: 60px" ng-include="'nav.html'"></div>
 
     <!--中间mainview-->
     <div class="main-view container">
@@ -51,7 +51,7 @@
                 <span style="color: #9b9b9b; font-size: .75rem;">
                     关注开发者<br>
                         <a href="https://github.com/apologize-zhang" target="_blank">
-                            <img src="home/img/footer_ico-github.png" style="width: 24px; opacity: .46;"/>
+                            <i class="fa fa-github fa-3x" aria-hidden="true"></i>
                         </a>
 
                 </span>
@@ -75,10 +75,6 @@
     <script src="../lib/angular-file-upload/dist/angular-file-upload.min.js"></script>
 
 
-
-
-
-
     <!--css-->
     <link rel="stylesheet" href="blog-ui.css">
 
@@ -88,25 +84,25 @@
     <link rel="stylesheet" href="../lib/angular-toastr/dist/angular-toastr.css" />
     <link rel="stylesheet" href="../lib/angular-ui-switch/angular-ui-switch.css" />
     <link rel="stylesheet" href="../lib/bootstrap3-dialog/dist/css/bootstrap-dialog.min.css" />
-
-
+    <link rel="stylesheet" href="../lib/font-awesome-4.7.0/css/font-awesome.css" />
 
 
 
     <!--自定义的js-->
     <script src="app.js"></script>
     <script src="index.js"></script>
-    <script src="home/home.js"></script>
-    <script src="home/nav.controller.js"></script>
+    <script src="home/home.controller.js"></script>
+    <script src="home/square.controller.js"></script>
+    <script src="nav.controller.js"></script>
     <script src="index.controller.js"></script>
-    <script src="home/slide.controller.js"></script>
-    <script src="home/nav.js"></script>
+    <script src="nav.js"></script>
     <script src="home/path/list/list.controller.js"></script>
     <script src="home/path/blog/blog.controller.js"></script>
     <script src="home/path/blog/input/blog.create.controller.js"></script>
     <script src="home/path/blog/input/blog.edit.controller.js"></script>
     <script src="home/path/blog/input/edit.directive.js"></script>
     <script src="home/path/user-center/user-center.controller.js"></script>
+    <script src="home/path/user-center/info-card.controller.js"></script>
     <script src="home/path/user/login.controller.js"></script>
     <script src="home/path/user/registe.controller.js"></script>
 
@@ -115,6 +111,7 @@
     <script src="service/ConstantsService.js"></script>
     <script src="service/StorageService.js"></script>
     <script src="service/UploadHelper.js"></script>
+    <script src="service/BlogService.js"></script>
 
 
     <!--编辑器-->

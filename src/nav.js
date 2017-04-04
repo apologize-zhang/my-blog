@@ -2,6 +2,42 @@ angular.module('myApp')
     .config(function ($stateProvider) {
 
         $stateProvider
+            .state('app', {
+                abstract: true,
+                views: {
+
+                }
+            })
+            .state('square', {
+                parent: 'app',
+                url: '/',
+                data: {
+                },
+                views: {
+                    'main@': {
+                        templateUrl: 'home/square.html',
+                        controller: 'SquareController'
+                    }
+                },
+                resolve: {
+
+                }
+            })
+            .state('home', {
+                parent: 'app',
+                url: '/home/:id',
+                data: {
+                },
+                views: {
+                    'main@': {
+                        templateUrl: 'home/home.html',
+                        controller: 'HomeController'
+                    }
+                },
+                resolve: {
+
+                }
+            })
             .state('list', {
                 url: ':state/list',
                 parent: 'home',
@@ -14,8 +50,8 @@ angular.module('myApp')
                 resolve: {}
             })
             .state('blog', {
-                url: '{id: [0-9]+}/blog',
-                parent: 'home',
+                url: '/blog/{blogId: [0-9]+}',
+                parent: 'app',
                 views: {
                     'main@': {
                         templateUrl: 'home/path/blog/blog.html',
@@ -25,7 +61,7 @@ angular.module('myApp')
                 resolve: {}
             })
             .state('user-center', {
-                url: 'user',
+                url: '/my',
                 parent: 'home',
                 views: {
                     'main@': {
@@ -45,8 +81,8 @@ angular.module('myApp')
                 }
             })
             .state('registe', {
-                url: 'registe',
-                parent: 'home',
+                url: '/registe',
+                parent: 'app',
                 views: {
                     'main@': {
                         templateUrl: 'home/path/user/registe.html',
