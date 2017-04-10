@@ -14,7 +14,7 @@
             <ul class="nav navbar-nav" ng-repeat="nav in navs">
 
                 <li ng-if="nav.isParent == false">
-                    <a ui-sref="list({'state': nav.name, 'id': nav.id})">JavaScript</a>
+                    <a ui-sref="list({'state': nav.name})">JavaScript</a>
                 </li>
 
                 <li class="dropdown" ng-if="nav.isParent == true">
@@ -23,7 +23,7 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li ng-repeat="child in nav.children">
-                            <a ui-sref="list({'state': child.name, 'id': child.id})">{{child.name}}</a>
+                            <a ui-sref="list({'state': child.name})">{{child.name}}</a>
                         </li>
                     </ul>
                 </li>

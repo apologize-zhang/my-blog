@@ -1,9 +1,7 @@
 'use strict';
 
 angular.module('myApp')
-    .controller('UserCenterController', function ($scope, $stateParams, UserService) {
-
-
+    .controller('UserCenterController', function ($scope, $stateParams, StorageService, UserService) {
 
 
 

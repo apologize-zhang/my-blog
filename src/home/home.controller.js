@@ -18,7 +18,6 @@ angular.module('myApp')
         );
 
 
-
         $scope.switch = function(type) {
             $scope.type = type
         }

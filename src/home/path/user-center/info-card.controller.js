@@ -9,14 +9,14 @@ angular.module('myApp')
         $scope.uploader = UploadHelper.createUploader($scope);
         $scope.uploader.init();
 
-        UserService.get(
-            {
-                id: 1
-            },
+
+        UserService.gerCurrentUser(
+            {},
             function success(response) {
-                if (ResponseUtil.validate(response)) {
-                    $scope.user = response.data;
-                }
+                $scope.user = response.data;
+            },
+            function error() {
+
             }
         );
 
@@ -30,7 +30,6 @@ angular.module('myApp')
             }
         };
 
-
         $scope.cancel = function() {
 
         };
@@ -42,7 +41,7 @@ angular.module('myApp')
 
             UserService.update(
                 {
-                    token: '123'
+                    token: StorageService.getToken()
                 },
                 $scope.editUser,
                 function success(response) {

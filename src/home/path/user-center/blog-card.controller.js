@@ -1,28 +1,24 @@
 'use strict';
 
 angular.module('myApp')
-    .controller('InfoCardController', function ($scope, ConstantService) {
+    .controller('BlogCardController', function ($scope, $stateParams, ConstantService, BlogService) {
 
-        $scope.navs = [
+
+        BlogService.list(
             {
-                name: 'Java',
-                isParent: true,
-                children: [
-                    {
-                        id: 1,
-                        name: 'Spring'
-                    },
-                    {
-                        id: 2,
-                        name: 'Maven'
-                    }
-                ]
+                userId: $stateParams.id,
+                page: 1,
+                pageSize: 10,
+                status: 10
             },
-            {
-                id: 3,
-                name: 'JavaScript',
-                isParent: false
+            function success(response) {
+                $scope.blogList = response.data.list;
+                console.table($scope.blogList);
+            },
+            function error(reason) {
+
             }
-        ]
+        );
+
 
     });

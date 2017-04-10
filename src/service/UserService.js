@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('myApp')
-    .service('UserService', function ($resource, ConstantService) {
+    .service('UserService', function ($resource, ConstantService, StorageService) {
         return $resource(ConstantService.BLOG + '/user/:id', {}, {
             'get': {
                 method: 'GET'
@@ -17,7 +17,7 @@ angular.module('myApp')
                 method: 'POST'
             },
             'gerCurrentUser': {
-                url: ConstantService.BLOG + '/user/current',
+                url: ConstantService.BLOG + '/user/current?token=' + StorageService.getToken(),
                 method: 'GET'
             }
         });

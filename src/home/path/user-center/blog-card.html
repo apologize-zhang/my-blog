@@ -4,30 +4,17 @@
     <h5 class="display-inline-block float-left margin-left-sm">草稿箱</h5>
     <h5 class="cursor-pointer display-inline-block float-right margin-right-sm"><i class="glyphicon glyphicon-plus"></i> 新文章</h5>
     <table style="line-height: 40px; width: 100%">
-        <tr style="border-bottom: 1px dashed #cccccc">
-            <td class="col-lg-9">这是我写的第一篇文章，随便写的</td>
-            <td class="col-lg-2">2017/1/1</td>
-            <td class="col-lg-1"><i class="glyphicon glyphicon-th"></i></td>
-        </tr>
-        <tr style="border-bottom: 1px dashed #cccccc">
-            <td class="col-lg-9">这是我写的第一篇文章，随便写的</td>
-            <td class="col-lg-2">2017/1/1</td>
-            <td class="col-lg-1"><i class="glyphicon glyphicon-th"></i></td>
-        </tr>
-        <tr style="border-bottom: 1px dashed #cccccc">
-            <td class="col-lg-9">这是我写的第一篇文章，随便写的</td>
-            <td class="col-lg-2">2017/1/1</td>
-            <td class="col-lg-1"><i class="glyphicon glyphicon-th"></i></td>
-        </tr>
-        <tr style="border-bottom: 1px dashed #cccccc">
-            <td class="col-lg-9">这是我写的第一篇文章，随便写的</td>
-            <td class="col-lg-2">2017/1/1</td>
-            <td class="col-lg-1"><i class="glyphicon glyphicon-th"></i></td>
-        </tr>
-        <tr style="border-bottom: 1px dashed #cccccc">
-            <td class="col-lg-9">这是我写的第一篇文章，随便写的</td>
-            <td class="col-lg-2">2017/1/1</td>
-            <td class="col-lg-1"><i class="glyphicon glyphicon-th"></i></td>
+        <tr style="border-bottom: 1px dashed #cccccc" ng-repeat="blog in blogList">
+            <td class="col-lg-9">
+                <a ui-sref="blog({'blogId': blog.id})">{{blog.title}}</a>
+            </td>
+            <td class="col-lg-2">
+                {{blog.createTime | date:'yyyy-MM-dd'}}
+            </td>
+            <td class="col-lg-1">
+                <i class="fa fa-pencil cursor-pointer margin-right-lg" title="编辑"></i>
+                <i class="fa fa-trash cursor-pointer" title="删除"></i>
+            </td>
         </tr>
 
     </table>
