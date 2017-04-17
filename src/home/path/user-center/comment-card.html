@@ -1,0 +1,37 @@
+<table style="line-height: 40px; width: 100%">
+
+
+    <tr>
+        <th class="col-lg-1">id</th>
+        <th class="col-lg-2">来源</th>
+        <th class="col-lg-5">内容</th>
+        <th class="col-lg-2">时间</th>
+        <th class="col-lg-1">操作</th>
+    </tr>
+
+    <tr class="bor-bot-gray text-left" ng-repeat="comment in commentList">
+
+        <td class="col-lg-1">
+            {{comment.id}}
+        </td>
+
+        <td class="col-lg-2">
+            <a ui-sref="blog({'blogId': comment.articleId})">{{comment.title}}</a>
+        </td>
+        <td class="col-lg-5">
+            <span>{{comment.comment}}</span>
+        </td>
+        <td class="col-lg-2">
+            {{comment.time | date:'yyyy-MM-dd HH:mm:ss'}}
+        </td>
+        <td class="col-lg-1">
+            <i class="fa fa-trash cursor-pointer" title="删除"></i>
+        </td>
+    </tr>
+    <tr class="text-center margin-top-sm bor-bot-gray" ng-if="commentList.length === 0">
+        <td colspan="3">
+            没有数据
+        </td>
+    </tr>
+
+</table>

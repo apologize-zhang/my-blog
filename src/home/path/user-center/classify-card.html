@@ -1,0 +1,57 @@
+<ul class="text-medium line-height-sm margin-left-sm">
+
+    <li style="margin-left: -15px">
+       <span>
+           <small ng-click="vm.showAdd = !vm.showAdd" class="fa fa-plus-circle cursor-pointer" aria-hidden="true"></small>
+       </span>
+    </li>
+
+    <li ng-repeat="classify in classifyList | ClassifyFilter: null">
+
+        <strong class="cursor-pointer"
+                ng-click="classify.showChildren = !classify.showChildren">
+
+            <i ng-if="!classify.showChildren" class="fa fa-caret-right" style="width: 10px" aria-hidden="true"></i>
+            <i ng-if="classify.showChildren" class="fa fa-caret-down" style="width: 10px" aria-hidden="true"></i>
+
+            <span class="wid-sm display-inline-block">{{classify.name}}</span>
+
+        </strong>
+
+        <i ng-if="classify.showChildren == true">
+            <small ng-click="classify.showAdd = !classify.showAdd" class="fa fa-plus-square cursor-pointer margin-left-sm" aria-hidden="true"></small>
+        </i>
+
+        <ul ng-if="classify.showChildren == true">
+            <li ng-repeat="child in classifyList | ClassifyFilter: classify.id">
+                {{child.name}}
+            </li>
+
+            <li ng-if="classify.showAdd == true">
+                <form class="form-group">
+                    <input ng-model="vm.childName" class="input-sm input-radius form-control outline-hide wid-sm display-inline-block" type="text">
+                    <button ng-click="vm.saveChild(classify)" class="btn btn-sm btn-primary">
+                        <i class="fa fa-check"></i>
+                    </button>
+                    <button ng-click="classify.showAdd = false" class="btn btn-sm btn-default">
+                        <i class="fa fa-remove"></i>
+                    </button>
+                </form>
+            </li>
+
+        </ul>
+    </li>
+
+    <li ng-if="vm.showAdd == true">
+        <form class="form-group">
+            <input ng-model="vm.parentName" class="input-sm input-radius form-control outline-hide wid-sm display-inline-block" type="text">
+            <button ng-click="vm.saveParent()" class="btn btn-sm btn-primary">
+                <i class="fa fa-check"></i>
+            </button>
+            <button ng-click="vm.showAdd = false" class="btn btn-sm btn-default">
+                <i class="fa fa-remove"></i>
+            </button>
+        </form>
+    </li>
+
+</ul>

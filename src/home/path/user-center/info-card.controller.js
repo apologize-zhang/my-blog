@@ -1,24 +1,13 @@
 'use strict';
 
 angular.module('myApp')
-    .controller('InfoCardController', function ($scope, UserService, ResponseUtil, UploadHelper) {
+    .controller('InfoCardController', function ($scope, UserService, AuthService, ResponseUtil, UploadHelper) {
 
 
         $scope.mode = 'read';
 
         $scope.uploader = UploadHelper.createUploader($scope);
         $scope.uploader.init();
-
-
-        UserService.gerCurrentUser(
-            {},
-            function success(response) {
-                $scope.user = response.data;
-            },
-            function error() {
-
-            }
-        );
 
         $scope.switchMode = function() {
             if($scope.mode == 'edit') {
@@ -31,7 +20,7 @@ angular.module('myApp')
         };
 
         $scope.cancel = function() {
-
+            $scope.mode = 'read';
         };
 
 

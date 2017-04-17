@@ -4,39 +4,31 @@ angular.module('myApp')
         $stateProvider
             .state('app', {
                 abstract: true,
-                views: {
-
-                }
+                views: {}
             })
             .state('square', {
                 parent: 'app',
                 url: '/',
-                data: {
-                },
+                data: {},
                 views: {
                     'main@': {
                         templateUrl: 'home/square.html',
                         controller: 'SquareController'
                     }
                 },
-                resolve: {
-
-                }
+                resolve: {}
             })
             .state('home', {
                 parent: 'app',
                 url: '/home/:id',
-                data: {
-                },
+                data: {},
                 views: {
                     'main@': {
                         templateUrl: 'home/home.html',
                         controller: 'HomeController'
                     }
                 },
-                resolve: {
-
-                }
+                resolve: {}
             })
             .state('list', {
                 url: ':state/list',
@@ -67,6 +59,11 @@ angular.module('myApp')
                     'main@': {
                         templateUrl: 'home/path/user-center/user-center.html',
                         controller: 'UserCenterController'
+                    }
+                },
+                resolve: {
+                    currentUser: function ($stateParams, AuthService) {
+                        return AuthService.hasAuthority($stateParams.id, 'home');
                     }
                 }
             })

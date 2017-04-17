@@ -7,7 +7,8 @@
 
         <br><br>
 
-        <strong class="cursor-pointer" ui-sref="user-center({'id': user.id})">{{user.name}}</strong>
+        <strong ng-if="currentUser.id == user.id" class="cursor-pointer" ui-sref="user-center({'id': user.id})">{{user.name}}</strong>
+        <strong ng-if="currentUser.id != user.id">{{user.name}}</strong>
 
         <br><br>
 

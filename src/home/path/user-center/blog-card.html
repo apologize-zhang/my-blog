@@ -1,11 +1,36 @@
 <!--文章-->
 <div>
-    <h5 class="display-inline-block float-left text-info">我的文章</h5>
-    <h5 class="display-inline-block float-left margin-left-sm">草稿箱</h5>
-    <h5 class="cursor-pointer display-inline-block float-right margin-right-sm"><i class="glyphicon glyphicon-plus"></i> 新文章</h5>
+    <div class="line-height-md" style="height: 40px;">
+        <h5 class="display-inline-block float-left cursor-pointer"
+            ng-class="{'text-info': statusFilter == 10}"
+            ng-click="statusChange(10)">
+            我的文章
+        </h5>
+        <h5 class="display-inline-block float-left margin-left-sm cursor-pointer"
+            ng-class="{'text-info': statusFilter == 20}"
+            ng-click="statusChange(20)">
+            草稿箱
+        </h5>
+        <h5 class="display-inline-block float-left margin-left-sm cursor-pointer"
+            ng-class="{'text-info': statusFilter == 90}"
+            ng-click="statusChange(90)">
+            回收站
+        </h5>
+
+        <h5 class="cursor-pointer display-inline-block float-right margin-right-sm"
+            ui-sref="new-blog">
+            <i class="glyphicon glyphicon-plus"></i>
+            新文章
+        </h5>
+    </div>
     <table style="line-height: 40px; width: 100%">
-        <tr style="border-bottom: 1px dashed #cccccc" ng-repeat="blog in blogList">
-            <td class="col-lg-9">
+        <tr class="bor-bot-gray" ng-repeat="blog in blogList">
+
+            <td class="col-lg-1">
+                分类
+            </td>
+
+            <td class="col-lg-8">
                 <a ui-sref="blog({'blogId': blog.id})">{{blog.title}}</a>
             </td>
             <td class="col-lg-2">
@@ -14,6 +39,11 @@
             <td class="col-lg-1">
                 <i class="fa fa-pencil cursor-pointer margin-right-lg" title="编辑"></i>
                 <i class="fa fa-trash cursor-pointer" title="删除"></i>
+            </td>
+        </tr>
+        <tr class="text-center margin-top-sm bor-bot-gray" ng-if="blogList.length === 0">
+            <td colspan="3">
+                没有数据
             </td>
         </tr>
 

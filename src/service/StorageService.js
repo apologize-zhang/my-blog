@@ -13,7 +13,8 @@ angular.module('myApp')
 
             // 获取token
             getToken: function() {
-                return sessionStorage.getItem('_token');
+                var token = sessionStorage.getItem('_token');
+                return token ? token : '';
             },
 
             // 清除一条记录
@@ -24,6 +25,18 @@ angular.module('myApp')
             // 清除所有记录
             clearAll: function () {
                 sessionStorage.clear();
+            },
+
+            // 是否有token
+            hasToken: function() {
+                return !angular.isUndefinedOrNull(sessionStorage.getItem('_token'));
+            },
+
+            saveContext: function(key, context) {
+                sessionStorage.setItem(key, context);
+            },
+            getContext: function(key) {
+                return sessionStorage.getItem(key);
             }
 
         }

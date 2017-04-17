@@ -16,7 +16,18 @@ angular.module('myApp', ['ui.router', 'ui.bootstrap', 'ngAnimate', 'ngResource',
     })
     .factory('ConstantService', function() {
         return {
-            BLOG: 'http://localhost:8099/blog'
+            BLOG: 'http://localhost:8099/blog',
+
+            BlogStatus: {
+                Normal: 10,
+                Draft: 20,
+                Archived: 90
+            },
+            UserType: {
+                Admin: 1,
+                Normal: 2
+            }
+
         }
     })
     // toastr 消息提示

@@ -8,7 +8,7 @@ angular.module('myApp')
 
         UserService.get(
             {
-                id: $stateParams.id
+                id: $stateParams.id ? $stateParams.id : 1
             },
             function success(response) {
                 if (ResponseUtil.validate(response)) {
@@ -17,6 +17,16 @@ angular.module('myApp')
             }
         );
 
+
+        UserService.gerCurrentUser(
+            {},
+            function success(response) {
+                $scope.currentUser = response.data;
+            },
+            function error() {
+
+            }
+        );
 
         $scope.switch = function(type) {
             $scope.type = type
