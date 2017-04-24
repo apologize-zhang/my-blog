@@ -17,7 +17,7 @@ angular.module('myApp')
                 return token ? token : '';
             },
 
-            // 清除一条记录
+            // 清除token
             removeToken: function () {
                 sessionStorage.removeItem('_token');
             },

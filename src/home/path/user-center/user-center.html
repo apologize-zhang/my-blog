@@ -8,6 +8,13 @@
         </li>
 
         <li class="cursor-pointer"
+            ng-class="{'color-blue': card == 'event'}"
+            ng-click="card = 'event'">
+            <i class="glyphicon glyphicon-comment"></i>
+            <strong>我的消息</strong>
+        </li>
+
+        <li class="cursor-pointer"
             ng-class="{'color-blue': card == 'info'}"
             ng-click="card = 'info'">
             <i class="fa fa-id-card-o" aria-hidden="true"></i>
@@ -32,12 +39,6 @@
             <strong>分类管理</strong>
         </li>
         <li class="cursor-pointer"
-            ng-class="{'color-blue': card == 'message'}"
-            ng-click="card = 'message'">
-            <i class="glyphicon glyphicon-comment"></i>
-            <strong>查看留言</strong>
-        </li>
-        <li class="cursor-pointer"
             ng-class="{'color-blue': card == 'link'}"
             ng-click="card = 'link'">
             <i class="glyphicon glyphicon-link"></i>
@@ -48,6 +49,7 @@
 
 
 <div style="width: 80%; height: 100%; padding: 10px; padding-bottom: 100px; box-shadow: 1px 0 10px #dddddd" class="float-left">
+    <div ng-if="card == 'event'" ng-include="'home/path/user-center/event-card.html'" ng-controller="EventCardController"></div>
     <div ng-if="card == 'info'" ng-include="'home/path/user-center/info-card.html'" ng-controller="InfoCardController"></div>
     <div ng-if="card == 'blog'" ng-include="'home/path/user-center/blog-card.html'" ng-controller="BlogCardController"></div>
     <div ng-if="card == 'classify'" ng-include="'home/path/user-center/classify-card.html'" ng-controller="ClassifyCardController"></div>

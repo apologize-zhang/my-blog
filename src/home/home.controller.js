@@ -1,10 +1,8 @@
 'use strict';
 
 angular.module('myApp')
-    .controller('HomeController', function ($scope, $stateParams, UserService, ResponseUtil) {
+    .controller('HomeController', function ($scope, $stateParams, UserService, ResponseUtil, StorageService) {
 
-
-        $scope.type = 1;
 
         UserService.get(
             {
@@ -21,14 +19,15 @@ angular.module('myApp')
         UserService.gerCurrentUser(
             {},
             function success(response) {
-                $scope.currentUser = response.data;
+                if(ResponseUtil.validate(response)) {
+                    $scope.currentUser = response.data;
+                }
             },
             function error() {
 
             }
         );
 
-        $scope.switch = function(type) {
-            $scope.type = type
-        }
+
+
     });

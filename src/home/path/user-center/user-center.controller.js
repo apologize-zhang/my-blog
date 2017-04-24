@@ -9,7 +9,7 @@ angular.module('myApp')
 
         var context = StorageService.getContext('user-center.card');
 
-        $scope.card = context ? context : 'info';
+        $scope.card = context ? context : 'event';
 
         $scope.$watch('card', function(newVal, oldVal) {
             if(angular.equals(newVal, oldVal)) {

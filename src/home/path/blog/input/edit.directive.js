@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('myApp')
-    .directive('editTextArea', function () {
+    .directive('editTextArea', function (ConstantService) {
         return {
             restrict: 'E',
             replace: true,
@@ -16,8 +16,9 @@ angular.module('myApp')
                     toolbarFloat: true,
                     toolbarFloatOffset: '60px',
                     upload: {
-                        params: {},
-                        url: 'aaa'
+                        params: null,
+                        fileKey: 'file',
+                        url: ConstantService.BLOG + "/upload"
                     },
                     codeLanguages: [{
                         name: 'java',

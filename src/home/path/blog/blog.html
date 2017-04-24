@@ -1,11 +1,12 @@
-<article class="article-box">
+<article class="article-box mobile-full">
     <h1 class="title">{{blog.title}}</h1>
 
-    <div class="user-card">
-        <a ui-sref="home({'id': blog.author})">
+    <div class="user-card cursor-pointer" ui-sref="home({'id': blog.author})">
+        <a>
             <img class="circel"
                  ng-src="{{blog.img}}"
-                 style="width: 30px; height: 30px;"></a>
+                 style="width: 30px; height: 30px;">
+        </a>
         <strong style="margin-left: 20px">{{blog.name}}</strong>
         <time style="margin-left: 40px; color: #9b9b9b; font-size: .75rem;">{{blog.createTime| date:'yyyy-MM-dd'}}</time>
     </div>

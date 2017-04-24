@@ -30,7 +30,9 @@ angular.module('myApp')
                         StorageService.saveToken(response.data);
                         toastr.success('欢迎回来', '登录成功');
 
-                        StorageService.saveToken(response.data);
+                        StorageService.saveToken(response.data.token);
+
+                        StorageService.saveContext("current_user", angular.toJson(response.data));
 
                         $uibModalInstance.close(null);
 

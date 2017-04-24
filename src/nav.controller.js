@@ -4,7 +4,16 @@
 'use strict';
 
 angular.module('myApp')
-    .controller('navController', function ($scope, ConstantService) {
+    .controller('navController', function ($scope, ConstantService, StorageService) {
+
+        $scope.currentUser = StorageService.getContext("current_user");
+        if(!angular.isUndefinedOrNull($scope.currentUser)) {
+            try{
+                $scope.currentUser = angular.fromJson($scope.currentUser);
+            } catch(e) {
+
+            }
+        }
 
         $scope.navs = [
             {

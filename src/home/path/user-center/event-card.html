@@ -1,0 +1,51 @@
+<div class="text-center">
+
+    <table class="table">
+
+        <tr>
+            <th class="col-lg-1 text-center">消息类型</th>
+            <th class="col-lg-7 text-center">消息内容</th>
+            <th class="col-lg-2 text-center">时间</th>
+            <th class="col-lg-1 text-center">操作</th>
+        </tr>
+
+        <tr class="bor-bot-gray" ng-repeat="event in eventList">
+
+            <td class="col-lg-1 text-center">
+
+                <span ng-if="event.type == 1">系统消息</span>
+                <span ng-if="event.type == 2">评论</span>
+                <span ng-if="event.type == 3">粉丝</span>
+                <span ng-if="event.type == 4">star</span>
+            </td>
+
+            <td class="col-lg-7 text-center">
+                <span ng-if="event.type == 1">
+                    {{event.mesage}}
+                </span>
+                <span ng-if="event.type == 2">
+                    <a ui-sref="home({'id': event.fromId})">{{event.fromUserName}}</a>评论了你的文章 <a ui-sref="blog({'blogId': event.objectId})">{{event.objectName}}</a>：{{event.message}}
+                </span>
+                <span ng-if="event.type == 3">
+                    <a ui-sref="home({'id': event.fromId})">{{event.fromUserName}}</a>成为你的新粉丝：{{event.message}}
+                </span>
+                <span ng-if="event.type == 4">
+                    <a ui-sref="home({'id': event.fromId})">{{event.fromUserName}}</a>赞了你的文章 <a ui-sref="blog({'blogId': event.objectId})">{{event.objectName}}</a>
+                </span>
+            </td>
+            <td class="col-lg-2 text-center">
+                {{event.time | date:'yyyy-MM-dd HH:mm:ss'}}
+            </td>
+            <td class="col-lg-1 text-center">
+                <i class="fa fa-check cursor-pointer" aria-hidden="true" title="标为已读"></i>
+                &nbsp;
+                <i class="fa fa-trash cursor-pointer" title="删除"></i>
+            </td>
+        </tr>
+        <tr class="text-center margin-top-sm bor-bot-gray" ng-if="blogList.length === 0">
+            <td colspan="5">
+                没有数据
+            </td>
+        </tr>
+    </table>
+</div>

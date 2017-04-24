@@ -16,7 +16,7 @@
         <ui-view name="main" ></ui-view>
     </div>
 
-    <aside style="width: 40px; float: right; position: fixed; bottom: 20px; right: 18px; z-index: 9999">
+    <aside class="fixed-aside">
         <div title="登录" ng-click="login()" class="btn btn-link btn-lg" style="width: 40px; height: 40px;">
             <i style="margin-left: -5px" class="glyphicon glyphicon-user"></i>
         </div>
@@ -30,35 +30,7 @@
         </div>
     </aside>
 
-
-    <footer style="height: 100px; margin-top: 50px;">
-        <div class="container" style="border-top: 2px solid rgba(204, 204, 204, 0.36); padding-top: 10px">
-            <div class="text-left col-lg-4 margin-left-sm">
-                <span style="color: #9b9b9b; font-size: .75rem;">
-                    Copyright © 2016 - 2017 zhangh.net 保留所有权利。<br>
-                    联系邮箱 <a href="mailto:zhanghuan@zhangh.net ">zhanghuan@zhangh.net</a><br>
-                    赣ICP备16005964号
-                </span>
-            </div>
-            <div class="text-left col-lg-4">
-                <span style="color: #9b9b9b; font-size: .75rem;">
-                    友情链接<br>
-                    <a href="http://lihang.info" target="_blank">lihang.info</a>
-                </span>
-            </div>
-
-            <div class="text-left col-lg-2">
-                <span style="color: #9b9b9b; font-size: .75rem;">
-                    关注开发者<br>
-                        <a href="https://github.com/apologize-zhang" target="_blank">
-                            <i class="fa fa-github fa-3x" aria-hidden="true"></i>
-                        </a>
-
-                </span>
-            </div>
-        </div>
-
-    </footer>
+    <div ng-include="'foot.html'"></div>
 
     <!--基础库-->
     <script src="../lib/jquery/dist/jquery.min.js"></script>
@@ -103,6 +75,7 @@
     <script src="home/path/blog/input/blog.edit.controller.js"></script>
     <script src="home/path/blog/input/edit.directive.js"></script>
     <script src="home/path/user-center/user-center.controller.js"></script>
+    <script src="home/path/user-center/event-card.controller.js"></script>
     <script src="home/path/user-center/info-card.controller.js"></script>
     <script src="home/path/user-center/blog-card.controller.js"></script>
     <script src="home/path/user-center/classify-card.controller.js"></script>
@@ -121,6 +94,7 @@
     <script src="service/BlogService.js"></script>
     <script src="service/ClassifyService.js"></script>
     <script src="service/CommentService.js"></script>
+    <script src="service/EventService.js"></script>
 
     <!--filter-->
     <script src="filter/ClassifyFilter.js"></script>

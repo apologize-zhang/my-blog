@@ -23,29 +23,30 @@
             新文章
         </h5>
     </div>
-    <table style="line-height: 40px; width: 100%">
-        <tr class="bor-bot-gray" ng-repeat="blog in blogList">
+    <table class="table table-hover">
+        <tbody class="table-striped">
+            <tr class="bor-bot-gray" ng-repeat="blog in blogList">
 
-            <td class="col-lg-1">
-                分类
-            </td>
+                <td class="col-lg-1">
+                    分类
+                </td>
 
-            <td class="col-lg-8">
-                <a ui-sref="blog({'blogId': blog.id})">{{blog.title}}</a>
-            </td>
-            <td class="col-lg-2">
-                {{blog.createTime | date:'yyyy-MM-dd'}}
-            </td>
-            <td class="col-lg-1">
-                <i class="fa fa-pencil cursor-pointer margin-right-lg" title="编辑"></i>
-                <i class="fa fa-trash cursor-pointer" title="删除"></i>
-            </td>
-        </tr>
-        <tr class="text-center margin-top-sm bor-bot-gray" ng-if="blogList.length === 0">
-            <td colspan="3">
-                没有数据
-            </td>
-        </tr>
-
+                <td class="col-lg-8">
+                    <a ui-sref="blog({'blogId': blog.id})">{{blog.title}}</a>
+                </td>
+                <td class="col-lg-2">
+                    {{blog.createTime | date:'yyyy-MM-dd'}}
+                </td>
+                <td class="col-lg-1">
+                    <i class="fa fa-pencil cursor-pointer margin-right-lg" title="编辑"></i>
+                    <i class="fa fa-trash cursor-pointer" title="删除"></i>
+                </td>
+            </tr>
+            <tr class="text-center margin-top-sm bor-bot-gray" ng-if="blogList.length === 0">
+                <td colspan="5">
+                    没有数据
+                </td>
+            </tr>
+        </tbody>
     </table>
 </div>

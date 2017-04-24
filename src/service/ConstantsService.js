@@ -7,7 +7,15 @@ angular.module('myApp')
     .service('ResponseUtil', function() {
         /* 判断response中是否有错误 */
         this.validate = function(response) {
-            return response.code == 0;
+
+            if(response.code == 0) {
+                return true
+            }
+            switch (response.code) {
+                case 112: toastr.error("参数错误", ""); break;
+                case 405: toastr.error("请先登录", ""); break;
+
+            }
         }
     })
     .service('AuthService', function($state, $q, toastr, StorageService, UserService, ResponseUtil) {

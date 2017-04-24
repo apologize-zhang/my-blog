@@ -16,7 +16,8 @@ angular.module('myApp', ['ui.router', 'ui.bootstrap', 'ngAnimate', 'ngResource',
     })
     .factory('ConstantService', function() {
         return {
-            BLOG: 'http://localhost:8099/blog',
+            // BLOG: 'http://localhost:8099/blog',
+            BLOG: 'http://zhangh.net/myblog',
 
             BlogStatus: {
                 Normal: 10,

@@ -68,7 +68,7 @@ angular.module('myApp')
                 }
             })
             .state('new-blog', {
-                url: 'new/blog',
+                url: '/new/blog',
                 parent: 'home',
                 views: {
                     'main@': {
