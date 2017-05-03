@@ -16,8 +16,8 @@ angular.module('myApp', ['ui.router', 'ui.bootstrap', 'ngAnimate', 'ngResource',
     })
     .factory('ConstantService', function() {
         return {
-            // BLOG: 'http://localhost:8099/blog',
-            BLOG: 'http://zhangh.net/myblog',
+            BLOG: 'http://localhost:8099/blog',
+            //BLOG: 'http://zhangh.net/myblog',
 
             BlogStatus: {
                 Normal: 10,
@@ -32,7 +32,9 @@ angular.module('myApp', ['ui.router', 'ui.bootstrap', 'ngAnimate', 'ngResource',
         }
     })
     // toastr 消息提示
-    .config(function(toastrConfig) {
+    .config(function(toastrConfig, $httpProvider) {
+
+        // $httpProvider.defaults.withCredentials = true;
 
         angular.extend(toastrConfig, {
             closeButton: true,

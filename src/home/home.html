@@ -5,8 +5,12 @@
 <div style="width: 75%; float: left; padding-left: 20px" class="mobile-full">
 
 
-    <div>
-        <img src="img.jpg" width="100%" height="300px" style="overflow-y: hidden">
+    <div style="height: 300px; width: 100%; overflow: hidden">
+        <div uib-carousel style="height: 300px" active="active" interval="myInterval" no-wrap="noWrapSlides">
+            <div uib-slide ng-repeat="slide in slides track by slide.id" index="slide.id">
+                <img ng-src="{{slide.image}}" style="margin:auto;">
+            </div>
+        </div>
     </div>
 
     <dl style="margin-top: 10px;">

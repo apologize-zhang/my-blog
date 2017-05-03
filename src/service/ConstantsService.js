@@ -4,7 +4,7 @@ angular.module('myApp')
     .service('ConstantsService', function (ConstantService) {
 
     })
-    .service('ResponseUtil', function() {
+    .service('ResponseUtil', function(toastr) {
         /* 判断response中是否有错误 */
         this.validate = function(response) {
 
