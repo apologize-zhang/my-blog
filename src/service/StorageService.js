@@ -2,7 +2,7 @@
 
 angular.module('myApp')
 
-    .factory('StorageService', function () {
+    .factory('StorageService', function ($rootScope) {
 
         return {
 
@@ -37,7 +37,13 @@ angular.module('myApp')
             },
             getContext: function(key) {
                 return sessionStorage.getItem(key);
+            },
+            saveUser: function(user) {
+                sessionStorage.setItem("current_user", angular.toJson(user));
+                $rootScope.$broadcast("userChanged");
+            },
+            getUser: function() {
+                sessionStorage.getItem("current_user");
             }
-
         }
     });

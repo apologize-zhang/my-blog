@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('myApp')
-    .controller('InfoCardController', function ($scope, UserService, AuthService, ResponseUtil, UploadHelper) {
+    .controller('InfoCardController', function ($scope, UserService, AuthService, StorageService, ResponseUtil, UploadHelper) {
 
 
         $scope.mode = 'read';
@@ -37,6 +37,7 @@ angular.module('myApp')
                     if (ResponseUtil.validate(response)) {
                         $scope.user = response.data;
                         $scope.mode = 'read';
+                        StorageService.saveUser($scope.user);
                     }
                 }
             );

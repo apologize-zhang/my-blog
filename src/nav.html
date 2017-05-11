@@ -23,7 +23,7 @@
             <ul class="nav navbar-nav" ng-repeat="nav in navs">
 
                 <li ng-if="nav.isParent == false">
-                    <a ui-sref="list({'state': nav.name})">JavaScript</a>
+                    <a ui-sref="list({'state': nav.name})">{{nav.name}}</a>
                 </li>
 
                 <li class="dropdown" ng-if="nav.isParent == true">

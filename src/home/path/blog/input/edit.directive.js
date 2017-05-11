@@ -45,7 +45,12 @@ angular.module('myApp')
                     pasteImage: true
                 });
 
-                editor.on('valuechanged', function() {
+                // 设置初始化值
+                if (!angular.isUndefinedOrNull(scope[attrs.ngModel])) {
+                    editor.setValue(scope[attrs.ngModel]);
+                }
+
+                editor.on('valuechanged', function () {
                     scope[attrs.ngModel] = editor.getValue();
                 });
 

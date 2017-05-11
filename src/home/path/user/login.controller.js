@@ -32,7 +32,7 @@ angular.module('myApp')
 
                         StorageService.saveToken(response.data.token);
 
-                        StorageService.saveContext("current_user", angular.toJson(response.data));
+                        StorageService.saveUser(response.data);
 
                         $uibModalInstance.close(null);
 

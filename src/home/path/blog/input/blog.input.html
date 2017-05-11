@@ -26,14 +26,21 @@
             <span>分类</span>
             <i class="fa fa-fw fa-info-circle  icon-notice-hide"></i>
         </span>
-        <div class="col-sm-7 form-gro">
+        <div class="col-sm-2 form-gro">
 
-            <input type="text"
-                   class="form-control col-grey-duck"
-                   name="classify"
-                   ng-model="blog.classify"
-                   ng-maxlength="72"
-                   required ng-model-options="{updateOn: 'blur'}">
+            <select selectpicker
+                    id="classifyPicker"
+                    name="advertiserId"
+                    ng-model="blog.classify"
+                    class="form-control"
+                    data-style="btn-white online-hide"
+                    ng-options="classify.id as classify.name for classify in classifies"
+                    required
+                    td-api-validate
+                    ng-disabled="vm.page.mode == 'edit'">
+                <option value="">请选择</option>
+            </select>
+
         </div>
     </div>
 

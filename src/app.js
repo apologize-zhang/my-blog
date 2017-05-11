@@ -36,6 +36,7 @@ angular.module('myApp', ['ui.router', 'ui.bootstrap', 'ngAnimate', 'ngResource',
 
         // $httpProvider.defaults.withCredentials = true;
 
+
         angular.extend(toastrConfig, {
             closeButton: true,
             progressBar: true,

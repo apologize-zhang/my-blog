@@ -4,18 +4,21 @@
 'use strict';
 
 angular.module('myApp')
-    .controller('navController', function ($scope, ConstantService, StorageService) {
+    .controller('navController', function ($scope, $rootScope, ConstantService, StorageService) {
 
-        $scope.currentUser = StorageService.getContext("current_user");
-        if(!angular.isUndefinedOrNull($scope.currentUser)) {
-            try{
-                $scope.currentUser = angular.fromJson($scope.currentUser);
-            } catch(e) {
+        $rootScope.$on('userChanged', function() {
 
+            $scope.currentUser = StorageService.getContext("current_user");
+            if(!angular.isUndefinedOrNull($scope.currentUser)) {
+                try{
+                    $scope.currentUser = angular.fromJson($scope.currentUser);
+                } catch(e) {
+
+                }
             }
-        }
+        });
 
-        $scope.navs = [
+        $rootScope.navs = [
             {
                 name: 'Java',
                 isParent: true,
@@ -39,12 +42,4 @@ angular.module('myApp')
 
     });
 
-angular.module('myApp')
-    .service('myService', function() {
-        return {
-            'log': function() {
-                console.log("log");
-            }
-        }
-    });
 

@@ -4,7 +4,10 @@ angular.module('myApp')
     .controller('RegisteController', function ($scope,
                                                $log,
                                                $state,
+                                               toastr,
+                                               StorageService,
                                                UploadHelper,
+                                               ResponseUtil,
                                                UserService) {
 
 
