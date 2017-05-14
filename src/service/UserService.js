@@ -2,7 +2,7 @@
 
 angular.module('myApp')
     .service('UserService', function ($resource, ConstantService, StorageService) {
-        return $resource(ConstantService.BLOG + '/user/:id', {}, {
+        return $resource(ConstantService.BLOG + '/user/:id', {token: StorageService.getToken()}, {
             'get': {
                 method: 'GET'
             },
@@ -17,7 +17,11 @@ angular.module('myApp')
                 method: 'POST'
             },
             'gerCurrentUser': {
-                url: ConstantService.BLOG + '/user/current?token=' + StorageService.getToken(),
+                url: ConstantService.BLOG + '/user/current',
+                method: 'GET'
+            },
+            'visit': {
+                url: ConstantService.BLOG + '/user/:id/visit',
                 method: 'GET'
             }
         });

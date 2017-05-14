@@ -18,6 +18,14 @@ angular.module('myApp')
             'list': {
                 url: ConstantService.BLOG + '/blog/user/:userId',
                 method: 'GET'
+            },
+            'read': {
+                url: ConstantService.BLOG + '/blog/:id/read',
+                method: 'GET'
+            },
+            'recommend': {
+                url: ConstantService.BLOG + '/blog/recommend',
+                method: 'GET'
             }
         });
     });

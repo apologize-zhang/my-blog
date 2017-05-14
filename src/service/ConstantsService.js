@@ -13,10 +13,10 @@ angular.module('myApp')
             }
             switch (response.code) {
                 case 112:
-                    toastr.error("参数错误", "");
+                    //toastr.error("参数错误", "");
                     break;
                 case 405:
-                    toastr.error("请先登录", "");
+                    // toastr.error("请先登录", "");
                     break;
                 case 404: {
                     $state.go('404');

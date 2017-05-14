@@ -31,7 +31,7 @@ angular.module('myApp')
                 resolve: {}
             })
             .state('list', {
-                url: '/:state/list',
+                url: '/list/:classify',
                 parent: 'home',
                 views: {
                     'main@': {

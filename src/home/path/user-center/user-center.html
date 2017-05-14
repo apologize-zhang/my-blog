@@ -1,54 +1,54 @@
-<div style="height: 100%; width: 15%; padding-top: 50px;" class="float-left">
+<div style="height: 100%; width: 10%; padding-top: 50px;" class="float-left">
 
-    <ul style="line-height: 40px; padding-right: 10px">
+    <ul style="line-height: 40px; padding-right: 10px; padding-left: 0">
 
         <li class="cursor-pointer" ui-sref="^">
             <i class="fa fa-reply" aria-hidden="true"></i>
-            <strong>返回</strong>
+            <strong class="mobile-none">返回</strong>
         </li>
 
         <li class="cursor-pointer"
             ng-class="{'color-blue': card == 'event'}"
             ng-click="card = 'event'">
             <i class="glyphicon glyphicon-comment"></i>
-            <strong>我的消息</strong>
+            <strong class="mobile-none">我的消息</strong>
         </li>
 
         <li class="cursor-pointer"
             ng-class="{'color-blue': card == 'info'}"
             ng-click="card = 'info'">
             <i class="fa fa-id-card-o" aria-hidden="true"></i>
-            <strong>个人资料</strong>
+            <strong class="mobile-none">个人资料</strong>
         </li>
         <li class="cursor-pointer"
             ng-class="{'color-blue': card == 'blog'}"
             ng-click="card = 'blog'">
             <i class="glyphicon glyphicon-list-alt"></i>
-            <strong>文章管理</strong>
+            <strong class="mobile-none">文章管理</strong>
         </li>
         <li class="cursor-pointer"
             ng-class="{'color-blue': card == 'comment'}"
             ng-click="card = 'comment'">
             <i class="glyphicon glyphicon-stats"></i>
-            <strong>评论列表</strong>
+            <strong class="mobile-none">评论列表</strong>
         </li>
         <li class="cursor-pointer"
             ng-class="{'color-blue': card == 'classify'}"
             ng-click="card = 'classify'">
             <i class="glyphicon glyphicon-paperclip"></i>
-            <strong>分类管理</strong>
+            <strong class="mobile-none">分类管理</strong>
         </li>
         <li class="cursor-pointer"
             ng-class="{'color-blue': card == 'link'}"
             ng-click="card = 'link'">
             <i class="glyphicon glyphicon-link"></i>
-            <strong>友情链接</strong>
+            <strong class="mobile-none">友情链接</strong>
         </li>
     </ul>
 </div>
 
 
-<div style="width: 80%; height: 100%; padding: 10px; padding-bottom: 100px; box-shadow: 1px 0 10px #dddddd" class="float-left">
+<div style="width: 90%; height: 100%; padding-bottom: 100px; box-shadow: 1px 0 10px #dddddd" class="float-left">
     <div ng-if="card == 'event'" ng-include="'home/path/user-center/event-card.html'" ng-controller="EventCardController"></div>
     <div ng-if="card == 'info'" ng-include="'home/path/user-center/info-card.html'" ng-controller="InfoCardController"></div>
     <div ng-if="card == 'blog'" ng-include="'home/path/user-center/blog-card.html'" ng-controller="BlogCardController"></div>

@@ -1,10 +1,121 @@
 <!--左边slide-->
-<div class="float-left slide wid-25 mobile-none" ng-include="'home/slide.html'">
+<div class="float-left slide wid-25 mobile-full">
+    <aside>
+
+        <div class="text-center" style="height: 300px; box-shadow: 1px 0 10px #cdcdcd">
+            <div style="height: 150px; background-image: url('{{user.img}}')"></div>
+
+            <img ng-src="{{user.img}}" style="width: 80px; height: 80px; margin: auto; margin-top: -15%;"
+                 class="circel">
+
+            <br><br>
+
+            <strong ng-if="currentUser.id == user.id" class="cursor-pointer" ui-sref="user-center({'id': user.id})">{{user.name}}</strong>
+            <strong ng-if="currentUser.id != user.id">{{user.name}}</strong>
+
+            <br><br>
+
+            <span>{{user.sign}}</span>
+
+        </div>
+
+        <div class="mobile-none" style="height: 180px; margin-top: 20px">
+            <div style="width: 10%;" class="float-left">
+                <table style="line-height: 32px; font-size: 4px">
+                    <tr ng-repeat="week in visitHistory">
+                        <td ng-if="$index % 2 == 0">{{months[week[0].month-1]}}</td>
+                    </tr>
+                </table>
+            </div>
+            <table style="width: 90%" class="float-left">
+                <tr ng-repeat="week in visitHistory">
+                    <td ng-repeat="day in week track by $index">
+                        <div class="visit-history"
+                             tooltip-append-to-body="true"
+                             tooltip-placement="top"
+                             uib-tooltip="{{day.num}} visitors on {{months[day.month-1]}} {{day.day}}, {{day.year}}"
+                             ng-class="getVisitClass(day.num)"></div>
+                    </td>
+                </tr>
+            </table>
+
+            <div class="float-right margin-top-sm" style="line-height: 16px; width: 160px;">
+                <div class="float-left margin-right-sm">Less</div>
+                <div class="visit-history visit-0 float-left"></div>
+                <div class="visit-history visit-5 float-left"></div>
+                <div class="visit-history visit-10 float-left"></div>
+                <div class="visit-history visit-20 float-left"></div>
+                <div class="visit-history visit-40 float-left"></div>
+                <div class="float-left margin-left-sm">More</div>
+            </div>
+
+        </div>
+
+        <!--个人文章排行-->
+        <div class="mobile-none margin-top-md" style="height: 400px; box-shadow: 1px 0 3px #cdcdcd; padding: 10px">
+            <ul class="col-lg-12" ng-init="type = 1">
+                <li class="col-lg-4 no-padding-right cursor-pointer" ng-class="{'switch-active': type == 1}"
+                    ng-click="switch(1)"><h5>最新文章</h5></li>
+                <li class="col-lg-4 no-padding-right cursor-pointer" ng-class="{'switch-active': type == 2}"
+                    ng-click="switch(2)"><h5>阅读排行</h5></li>
+                <li class="col-lg-4 no-padding-right cursor-pointer" ng-class="{'switch-active': type == 3}"
+                    ng-click="switch(3)"><h5>star排行</h5></li>
+            </ul>
+
+            <ul class="padding-left-sm overflow-x-hidden">
+                <li ng-repeat="blog in recommend" style="line-height: 40px; border-bottom: 1px dashed #CCCCCC">
+                    <a ui-sref="blog({'blogId': blog.id})">{{blog.title}}</a>
+                </li>
+            </ul>
+        </div>
+
+        <br>
+        <hr>
+
+        <!--全站文章热度排名-->
+        <!--<span class="color-red">-->
+        <!--<i class="fa fa-thermometer-full" aria-hidden="true"></i>-->
+        <!--hot~-->
+        <!--</span>-->
+        <!--<h4 class="margin-left-sm display-inline-block">全站排名</h4>-->
+
+        <!--<ul class="no-padding-left overflow-x-hidden">-->
+        <!--<li ng-repeat="blog in allRecommend" style="line-height: 40px;">-->
+        <!--<span class="color-red" style="border: 1px solid red; border-radius: 4px; padding: 0 3px 0 3px">{{blog.readNum}}</span>-->
+        <!--<a ui-sref="blog({'blogId': blog.id})">{{blog.title}}</a>-->
+        <!--</li>-->
+        <!--</ul>-->
+
+        <div class="panel panel-default" ng-init="navExpand = true">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" ng-click="navExpand = !navExpand">
+                        分类信息
+                    </a>
+                </h4>
+            </div>
+            <div ng-if="navExpand" class="panel-collapse collapse in">
+                <div class="list-group">
+                    <div ng-repeat="nav in navs" class="bor-bot-solid-gray">
+                        <span ng-if="nav.isParent == false">
+                            <a ui-sref="list({'classify': nav.id})" class="list-group-item">{{nav.name}}</a>
+                        </span>
+                        <span ng-if="nav.isParent == true">
+                            <strong class="list-group-item">{{nav.name}}</strong>
+                            <a ui-sref="list({'classify': item.id})" ng-repeat="item in nav.children"
+                               class="list-group-item">{{item.name}}</a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </aside>
 </div>
 
 <div style="width: 75%; float: left; padding-left: 20px" class="mobile-full">
 
-    <div style="height: 300px; width: 100%; overflow: hidden">
+    <div style="max-height: 300px; width: 100%; overflow: hidden" class="mobile-none">
         <div uib-carousel style="height: 300px" active="0" interval="2000">
             <div uib-slide ng-repeat="slide in slides track by slide.id" index="slide.id">
                 <img ng-src="{{slide.image}}" style="margin:auto;">
@@ -15,7 +126,7 @@
     <dl style="margin-top: 10px; min-height: 800px;">
         <dd ng-repeat="blog in blogList" style="margin-top: 25px">
 
-            <article class="article-card" style="padding: 15px;background-color: #ffffff;">
+            <article class="article-card overflow-x-hidden" style="padding: 15px;background-color: #ffffff;">
                 <a ui-sref="blog({'blogId': blog.id})"><h4>{{blog.title}}</h4></a>
                 <img src="img.jpg" style="margin-bottom: 10px; width: 100%; max-height: 200px; overflow-y: hidden">
                 <section style="text-indent: 2em; line-height: 24px">
@@ -28,7 +139,9 @@
                              ng-src="{{blog.img}}"
                              style="width: 30px; height: 30px;"></a>
                     <strong ui-sref="home({'id': blog.author})" class="cursor-pointer" style="margin-left: 20px">{{blog.name}}</strong>
-                    <time style="margin-left: 40px; color: #9b9b9b; font-size: .75rem;">{{blog.createTime | date:'yyyy年MM月dd日'}}</time>
+                    <time style="margin-left: 40px; color: #9b9b9b; font-size: .75rem;">{{blog.createTime |
+                        date:'yyyy年MM月dd日'}}
+                    </time>
 
                     <a ui-sref="blog({'blogId': blog.id})" class="float-right padding-right-sm">查看全文 >></a>
                 </div>

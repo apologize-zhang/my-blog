@@ -39,7 +39,7 @@
                 </td>
                 <td class="col-lg-1">
                     <i class="fa fa-pencil cursor-pointer margin-right-lg" ui-sref="edit-blog({'blogId': blog.id})" title="编辑"></i>
-                    <i class="fa fa-trash cursor-pointer" title="删除"></i>
+                    <i class="fa fa-trash cursor-pointer" ng-click="delete(blog)" title="删除"></i>
                 </td>
             </tr>
             <tr class="text-center margin-top-sm bor-bot-gray" ng-if="blogList.length === 0">

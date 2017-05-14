@@ -8,7 +8,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" ui-sref="square">博客广场</a>
+            <a class="navbar-brand margin-left-sm" ui-sref="home">首页</a>
 
             <a class="display-inline-block cursor-pointer margin-left-sm mobile-block">
                 <span ui-sref="home({'id': currentUser.id})" class="navbar-brand">{{currentUser.name}}</span>
@@ -20,32 +20,59 @@
         </div>
 
         <div class="collapse navbar-collapse" id="example-navbar-collapse">
-            <ul class="nav navbar-nav" ng-repeat="nav in navs">
+            <!--<ul class="nav navbar-nav" ng-repeat="nav in navs">-->
 
-                <li ng-if="nav.isParent == false">
-                    <a ui-sref="list({'state': nav.name})">{{nav.name}}</a>
+                <!--<li ng-if="nav.isParent == false">-->
+                    <!--<a ui-sref="list({'classify': nav.id})">{{nav.name}}</a>-->
+                <!--</li>-->
+
+                <!--<li ng-if="nav.isParent == true">-->
+                    <!--<a class="dropdown-toggle" data-toggle="dropdown">-->
+                        <!--{{nav.name}} <b class="caret"></b>-->
+                    <!--</a>-->
+                    <!--<ul class="dropdown-menu">-->
+                        <!--<li ng-repeat="child in nav.children">-->
+                            <!--<a ui-sref="list({'classify': child.id})">{{child.name}}</a>-->
+                        <!--</li>-->
+                    <!--</ul>-->
+                <!--</li>-->
+            <!--</ul>-->
+
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="">发现</a>
                 </li>
-
-                <li class="dropdown" ng-if="nav.isParent == true">
+                <li>
+                    <a href=""></a>
+                </li>
+                <li>
                     <a class="dropdown-toggle" data-toggle="dropdown">
-                        {{nav.name}} <b class="caret"></b>
+                        实用工具 <b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu">
-                        <li ng-repeat="child in nav.children">
-                            <a ui-sref="list({'state': child.name})">{{child.name}}</a>
+
+                        <li>
+                            <a href="http://www.bejson.com/jsonviewernew/" target="_blank">json格式化</a>
+                        </li>
+                        <li>
+                            <a href="https://translate.google.cn/" target="_blank">google翻译</a>
+                        </li>
+                        <li>
+                            <a href="">小游戏</a>
                         </li>
                     </ul>
                 </li>
             </ul>
 
-            <a class="display-inline-block cursor-pointer margin-left-sm mobile-none" ui-sref="home({'id': currentUser.id})">
+            <a class="display-inline-block cursor-pointer margin-left-sm mobile-none"
+               ui-sref="home({'id': currentUser.id})">
                 <span class="navbar-brand">{{currentUser.name}}</span>
             </a>
 
             <form class="navbar-form navbar-right" role="search">
 
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="全局搜索">
+                    <input type="text" class="form-control" placeholder="搜索">
                 </div>
                 <button type="submit" class="btn btn-default">提交</button>
             </form>

@@ -4,7 +4,7 @@
 angular.module('myApp', ['ui.router', 'ui.bootstrap', 'ngAnimate', 'ngResource', 'toastr', 'uiSwitch', 'angularFileUpload'])
     .run(function ($rootScope, $state) {
 
-        $state.go('square');
+        $state.go('home');
 
         $rootScope.$on('$stateChangeSuccess',  function(event, toState, toParams, fromState, fromParams) {
             console.log(toState);

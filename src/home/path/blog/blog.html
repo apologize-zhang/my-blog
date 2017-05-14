@@ -1,14 +1,15 @@
 <article class="article-box mobile-full">
     <h1 class="title">{{blog.title}}</h1>
 
-    <div class="user-card cursor-pointer" ui-sref="home({'id': blog.author})">
-        <a>
-            <img class="circel"
-                 ng-src="{{blog.img}}"
-                 style="width: 30px; height: 30px;">
+    <div class="user-card">
+        <a ui-sref="home({'id': blog.author})">
+            <img class="circel-sm"
+                 ng-src="{{blog.img}}">
         </a>
-        <strong style="margin-left: 20px">{{blog.name}}</strong>
-        <time style="margin-left: 40px; color: #9b9b9b; font-size: .75rem;">{{blog.createTime| date:'yyyy-MM-dd'}}</time>
+        <strong class="margin-left-xs cursor-pointer" ui-sref="home({'id': blog.author})">{{blog.name}}</strong>
+        <time class="margin-left-sm color-gray text-sm">{{blog.createTime| date:'yyyy-MM-dd'}}
+        </time>
+        <span class="margin-left-sm color-gray text-sm">阅读: {{blog.readNum}}</span>
     </div>
 
     <div class="article-content">
@@ -17,8 +18,122 @@
     </div>
 </article>
 
+<div class="wid-80 mobile-full margin-top-sm padding-bottom-sm" style="margin: auto">
+    <!-- JiaThis Button BEGIN -->
+    <div class="jiathis_style">
+        <span class="jiathis_txt">分享到：</span>
+        <a class="jiathis_button_qzone">QQ空间</a>
+        <a class="jiathis_button_tsina">新浪微博</a>
+        <a class="jiathis_button_weixin">微信</a>
+        <a href="http://www.jiathis.com/share?uid=2133408" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+        <a class="jiathis_counter_style"></a>
+    </div>
+    <script type="text/javascript">
+        var jiathis_config = {data_track_clickback:'true'};
+    </script>
+    <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=2133408" charset="utf-8"></script>
+    <!-- JiaThis Button END -->
+</div>
+
+<!--PC版-->
+<div>
+    <div id="SOHUCS" sid="$stateParams.blogId" class="wid-80"></div>
+    <script type="text/javascript">
+        (function () {
+            if (window.changyan !== undefined || window.cyan !== undefined) {
+                return;
+            }
+            var createNs = function () {
+                if (window.changyan !== undefined) {
+                    return;
+                } else {
+                    window.changyan = {};
+                    window.changyan.api = {};
+                    window.changyan.api.config = function (conf) {
+                        window.changyan.api.tmpIsvPageConfig = conf;
+                    };
+                    window.changyan.api.ready = function (fn) {
+                        window.changyan.api.tmpHandles = window.changyan.api.tmpHandles || [];
+                        window.changyan.api.tmpHandles.push(fn);
+                    };
+                    window.changyan.ready = function (fn) {
+                        if (window.changyan.rendered) {
+                            fn && fn();
+                        } else {
+                            window.changyan.tmpHandles = window.changyan.tmpHandles || [];
+                            window.changyan.tmpHandles.push(fn);
+                        }
+                    }
+                }
+            };
+
+            var createMobileNs = function () {
+                if (window.cyan) {
+                    return;
+                }
+
+                window.cyan = {};
+                window.cyan.api = {};
+                window.cyan.api.ready = function (fn) {
+                    window.cyan.api.tmpHandles = window.cyan.api.tmpHandles || [];
+                    window.cyan.api.tmpHandles.push(fn);
+                };
+            };
+
+
+            var loadVersionJs = function () {
+                var loadJs = function (src, fun) {
+                    var head = document.getElementsByTagName('head')[0] || document.head || document.documentElement;
+
+                    var script = document.createElement('script');
+                    script.setAttribute('type', 'text/javascript');
+                    script.setAttribute('charset', 'UTF-8');
+                    script.setAttribute('src', src);
+
+                    if (typeof fun === 'function') {
+                        if (window.attachEvent) {
+                            script.onreadystatechange = function () {
+                                var r = script.readyState;
+                                if (r === 'loaded' || r === 'complete') {
+                                    script.onreadystatechange = null;
+                                    fun();
+                                }
+                            };
+                        } else {
+                            script.onload = fun;
+                        }
+                    }
+
+                    head.appendChild(script);
+                };
+
+                var ver = +new Date() + window.Math.random().toFixed(16);
+                var protocol = (('https:' == window.document.location.protocol) ? "https://" : "http://");
+                var url = protocol + 'changyan.itc.cn/upload/version-v3.js?' + ver;
+                loadJs(url);
+            };
+            createNs();
+            createMobileNs();
+            loadVersionJs();
+        }());
+        window.changyan.api.config({
+            appid: 'cyt0ysb5w',
+            conf: 'prod_5a759e1d69ca1139993f3d27bfa7c0e0'
+        });
+    </script>
+</div>
+
+<!--WAP版-->
+<!--<div class="mobile-block">-->
+    <!--<div id="SOHUCS" sid="$stateParams.blogId" class="wid-80"></div>-->
+    <!--<script id="changyan_mobile_js" charset="utf-8" type="text/javascript"-->
+            <!--src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=cyt0ysb5w&conf=prod_5a759e1d69ca1139993f3d27bfa7c0e0">-->
+    <!--</script>-->
+<!--</div>-->
+
+
 <!--代码高亮-->
-<script type="text/javascript" src="../lib/syntaxhighlighter_3.0.83/scripts/shCore.js"></script>
-<script type="text/javascript" src="../lib/syntaxhighlighter_3.0.83/scripts/shBrushJScript.js"></script>
-<script type="text/javascript" src="../lib/syntaxhighlighter_3.0.83/scripts/shBrushXml.js"></script>
-<link rel="stylesheet" href="../lib/syntaxhighlighter_3.0.83/styles/shCoreDefault.css">
+<!--<script type="text/javascript" src="../lib/syntaxhighlighter_3.0.83/scripts/shCore.js"></script>-->
+<!--<script type="text/javascript" src="../lib/syntaxhighlighter_3.0.83/scripts/shBrushJScript.js"></script>-->
+<!--<script type="text/javascript" src="../lib/syntaxhighlighter_3.0.83/scripts/shBrushXml.js"></script>-->
+<!--<link rel="stylesheet" href="../lib/syntaxhighlighter_3.0.83/styles/shCoreDefault.css">-->

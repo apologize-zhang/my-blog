@@ -13,10 +13,30 @@
     <script src="../lib/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="../lib/angular-bootstrap/ui-bootstrap.js"></script>
 
-</head>
-<body>
+    <script src="../lib/angular-animate/angular-animate.js"></script>
 
-<div class="fade-in" style="width: 100px; height: 100px; background-color: green"></div>
+</head>
+<body ng-app="myApp">
+<button ng-click="hide = !hide">隐藏</button>
+<div class="div" ng-hide="hide">
+    1321321 <br>
+    1321321 <br>
+    1321321 <br>
+    1321321 <br>
+    1321321 <br>
+    1321321 <br>
+    1321321 <br>
+    1321321 <br>
+    1321321 <br>
+    1321321 <br>
+
+</div>
+
+
+<script>
+    var app = angular.module('myApp', ['ngAnimate']);
+</script>
+
 
 </body>
 </html>

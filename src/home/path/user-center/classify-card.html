@@ -1,9 +1,15 @@
-<ul class="text-medium line-height-sm margin-left-sm">
+<ul class="text-medium line-height-sm margin-left-sm margin-top-sm">
 
     <li style="margin-left: -15px">
-       <span>
-           <small ng-click="vm.showAdd = !vm.showAdd" class="fa fa-plus-circle cursor-pointer" aria-hidden="true"></small>
-       </span>
+        <button class="btn btn-default" ng-click="editModel = !editModel">
+            <span ng-if="editModel">完成</span>
+            <span ng-if="!editModel">编辑</span>
+        </button>
+    </li>
+
+    <li style="margin-left: -15px;" class="margin-top-sm">
+        <small ng-if="editModel" ng-click="vm.showAdd = !vm.showAdd" class="fa fa-plus-circle cursor-pointer"
+               aria-hidden="true">添加</small>
     </li>
 
     <li ng-repeat="classify in classifyList | ClassifyFilter: null">
@@ -14,22 +20,72 @@
             <i ng-if="!classify.showChildren" class="fa fa-caret-right" style="width: 10px" aria-hidden="true"></i>
             <i ng-if="classify.showChildren" class="fa fa-caret-down" style="width: 10px" aria-hidden="true"></i>
 
-            <span class="wid-sm display-inline-block">{{classify.name}}</span>
+            <span class="display-inline-block">{{classify.name}}</span>
 
         </strong>
 
-        <i ng-if="classify.showChildren == true">
-            <small ng-click="classify.showAdd = !classify.showAdd" class="fa fa-plus-square cursor-pointer margin-left-sm" aria-hidden="true"></small>
+        <!--增加一级分类-->
+        <i ng-if="classify.showChildren == true && editModel">
+            <small ng-click="classify.showAdd = !classify.showAdd"
+                   class="fa fa-plus-square cursor-pointer margin-left-sm" aria-hidden="true" title="增加"></small>
         </i>
+        <!--删除一级分类-->
+        <i ng-if="!classify.showChildren && editModel">
+            <small ng-click="delete(classify)" class="fa fa-trash cursor-pointer margin-left-sm" aria-hidden="true"
+                   title="删除"></small>
+        </i>
+        <!--重命名一级分类-->
+        <span ng-if="!classify.showChildren && editModel">
+            <small ng-click="classify.showRename = true" class="fa fa-pencil cursor-pointer margin-left-sm" aria-hidden="true"
+                   title="重命名"></small>
+                <div ng-if="classify.showRename == true" ng-init="classify.newName = classify.name">
+                    <form class="form-group">
+                        <input ng-model="classify.newName"
+                               class="input-sm input-radius form-control outline-hide wid-md display-inline-block" type="text">
+                        <button ng-click="vm.update(classify)" class="btn btn-sm btn-primary">
+                            <i class="fa fa-check"></i>
+                        </button>
+                        <button ng-click="classify.showRename = false" class="btn btn-sm btn-default">
+                            <i class="fa fa-remove"></i>
+                        </button>
+                    </form>
+                </div>
+        </span>
 
         <ul ng-if="classify.showChildren == true">
             <li ng-repeat="child in classifyList | ClassifyFilter: classify.id">
                 {{child.name}}
+
+                <!--删除二级分类-->
+                <i ng-if="editModel">
+                    <small ng-click="delete(child)" class="fa fa-trash cursor-pointer margin-left-sm" aria-hidden="true"
+                           title="删除"></small>
+                </i>
+                <!--重命名二级分类-->
+                <span ng-if="editModel">
+                    <small ng-click="child.showRename = true" class="fa fa-pencil cursor-pointer margin-left-sm" aria-hidden="true"
+                       title="重命名"></small>
+                    <div ng-if="child.showRename == true" ng-init="child.newName = child.name">
+                        <form class="form-group">
+                            <input ng-model="child.newName"
+                                   class="input-sm input-radius wid-md form-control outline-hide display-inline-block" type="text">
+                            <button ng-click="vm.update(child)" class="btn btn-sm btn-primary">
+                                <i class="fa fa-check"></i>
+                            </button>
+                            <button ng-click="child.showRename = false" class="btn btn-sm btn-default">
+                                <i class="fa fa-remove"></i>
+                            </button>
+                        </form>
+                    </div>
+                 </span>
+
             </li>
 
             <li ng-if="classify.showAdd == true">
                 <form class="form-group">
-                    <input ng-model="vm.childName" class="input-sm input-radius form-control outline-hide wid-sm display-inline-block" type="text">
+                    <input ng-model="vm.childName"
+                           class="input-sm wid-md input-radius form-control outline-hide display-inline-block"
+                           type="text">
                     <button ng-click="vm.saveChild(classify)" class="btn btn-sm btn-primary">
                         <i class="fa fa-check"></i>
                     </button>
@@ -44,7 +100,8 @@
 
     <li ng-if="vm.showAdd == true">
         <form class="form-group">
-            <input ng-model="vm.parentName" class="input-sm input-radius form-control outline-hide wid-sm display-inline-block" type="text">
+            <input ng-model="vm.parentName"
+                   class="input-sm input-radius wid-md form-control outline-hide display-inline-block" type="text">
             <button ng-click="vm.saveParent()" class="btn btn-sm btn-primary">
                 <i class="fa fa-check"></i>
             </button>

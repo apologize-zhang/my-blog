@@ -96,6 +96,14 @@ li {
     padding-left: 5%
 }
 
+.padding-bottom-sm {
+    padding-bottom: 5%;
+}
+
+.margin-left-xs {
+    margin-left: 2%
+}
+
 .margin-left-sm {
     margin-left: 5%
 }
@@ -140,6 +148,10 @@ li {
     font-size: medium;
 }
 
+.text-sm {
+    font-size: .75rem;
+}
+
 .display-inline-block {
     display: inline-block !important;
 }
@@ -150,6 +162,10 @@ li {
 
 .overflow-y-auto {
     overflow-y: auto
+}
+
+.overflow-x-hidden {
+    overflow-x: hidden;
 }
 
 .line-height-sm {
@@ -172,6 +188,10 @@ li {
     border-bottom: 2px solid #acd6ff
 }
 
+.bor-bot-solid-gray {
+    border-bottom: 1px solid #cccccc
+}
+
 .bor-bot-gray {
     border-bottom: 1px dashed #cccccc
 }
@@ -189,9 +209,12 @@ li {
     color: #2894ff
 }
 
-/* 左边栏 */
-.slide {
-    height: 800px;
+.color-red {
+    color: red;
+}
+
+.color-gray {
+    color: #9b9b9b;
 }
 
 .fixed-aside {
@@ -209,10 +232,22 @@ li {
 
 /*移动端*/
 @media (max-width: 767px) {
-    .fixed-aside {right: 3px}
-    .mobile-none { display: none !important;}
-    .mobile-block { display: block !important; }
-    .mobile-full { width: 100% !important; padding: 20px 10px 20px 10px !important;}
+    .fixed-aside {
+        right: 0
+    }
+
+    .mobile-none {
+        display: none !important;
+    }
+
+    .mobile-block {
+        display: block !important;
+    }
+
+    .mobile-full {
+        width: 100% !important;
+        padding: 0 !important;
+    }
 }
 
 .margin-rigth-0 {
@@ -247,6 +282,12 @@ li {
     border-radius: 50% !important;
 }
 
+.circel-sm {
+    border-radius: 50% !important;
+    width: 40px;
+    height: 40px;
+}
+
 .user-card {
     margin: 30px auto 20px auto;
     padding-left: 20px;
@@ -266,6 +307,12 @@ li {
     border-left: none;
 }
 
+@media (max-width: 767px) {
+    .article-box {
+        box-shadow: none;
+    }
+}
+
 .article-content {
     margin-top: 30px;
 }
@@ -279,4 +326,26 @@ li {
 .article-card:hover {
     transition: box-shadow 0.3s;
     box-shadow: 1px 2px 10px #dddddd;
+}
+
+.visit-history {
+    border: 1px solid #fff;
+    border-radius: 4px;
+    width: 16px;
+    height: 16px;
+}
+.visit-0 {
+    background-color: #EEEEEE;
+}
+.visit-5 {
+    background-color: #C6E48B;
+}
+.visit-10 {
+    background-color: #7BC96F;
+}
+.visit-20 {
+    background-color: #239A3B;
+}
+.visit-40 {
+    background-color: #196127;
 }

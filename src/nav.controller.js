@@ -6,40 +6,47 @@
 angular.module('myApp')
     .controller('navController', function ($scope, $rootScope, ConstantService, StorageService) {
 
-        $rootScope.$on('userChanged', function() {
+        $rootScope.$on('userChanged', function () {
+            loadUser();
+        });
 
-            $scope.currentUser = StorageService.getContext("current_user");
-            if(!angular.isUndefinedOrNull($scope.currentUser)) {
-                try{
+        var loadUser = function() {
+            $scope.currentUser = StorageService.getUser();
+            if (!angular.isUndefinedOrNull($scope.currentUser)) {
+                try {
                     $scope.currentUser = angular.fromJson($scope.currentUser);
-                } catch(e) {
+                } catch (e) {
 
                 }
             }
-        });
+        };
 
-        $rootScope.navs = [
-            {
-                name: 'Java',
-                isParent: true,
-                children: [
-                    {
-                        id: 1,
-                        name: 'Spring'
-                    },
-                    {
-                        id: 2,
-                        name: 'Maven'
-                    }
-                ]
-            },
-            {
-                id: 3,
-                name: 'JavaScript',
-                isParent: false
-            }
-        ]
+        loadUser();
 
+        // if (angular.isUndefinedOrNull($rootScope.navs)) {
+        //     $rootScope.navs = [
+        //         {
+        //             name: 'Java',
+        //             isParent: true,
+        //             children: [
+        //                 {
+        //                     id: 1,
+        //                     name: 'Spring'
+        //                 },
+        //                 {
+        //                     id: 2,
+        //                     name: 'Maven'
+        //                 }
+        //             ]
+        //         },
+        //         {
+        //             id: 3,
+        //             name: 'JavaScript',
+        //             isParent: false
+        //         }
+        //     ]
+        //
+        // }
     });
 
 

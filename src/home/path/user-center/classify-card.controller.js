@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('myApp')
-    .controller('ClassifyCardController', function ($scope, $stateParams, ConstantService, ResponseUtil, ClassifyService) {
+    .controller('ClassifyCardController', function ($scope, $stateParams,
+                                                    ConstantService, ResponseUtil, ClassifyService) {
 
 
         var vm = $scope.vm = {};
@@ -24,6 +25,69 @@ angular.module('myApp')
         };
 
         $scope.load();
+
+
+        /**
+         * 删除
+         *
+         * @param classify
+         */
+        $scope.delete = function (classify) {
+
+            if ($scope.classifyFilter(classify.id).length > 0) {
+                BootstrapDialog.alert({
+                    title: '',
+                    message: "该分类下有子分类，不能删除",
+                    type: '',
+                    closable: true,
+                    draggable: true,
+                    buttonLabel: "好的",
+                    callback: function (result) {
+
+                    }
+                });
+                return;
+            }
+
+            BootstrapDialog.confirm({
+                title: '',
+                message: "你确定要删除改分类吗？",
+                type: '',
+                closable: true,
+                draggable: true,
+                btnCancelLabel: "取消",
+                btnOKLabel: "是的",
+                btnOKClass: 'btn-primary',
+                callback: function (result) {
+
+                    if (!result) {
+                        return;
+                    }
+
+                    HoldOn.open();
+
+                    ClassifyService.delete(
+
+                        {'id': classify.id},
+                        function success(response) {
+                            HoldOn.close();
+
+                            if (ResponseUtil.validate(response)) {
+                                $scope.load();
+                                vm.showAdd = false;
+                            } else {
+                                toastr.error("删除失败", response.message);
+                            }
+
+                        },
+                        function error() {
+                            HoldOn.close();
+                            toastr.error("删除失败", "请稍后重试");
+                        })
+                }
+            });
+
+        };
 
         $scope.classifyFilter = function (parentId, classify) {
             var items = [];
@@ -53,8 +117,8 @@ angular.module('myApp')
                 function success(response) {
                     HoldOn.close();
 
-                    if(ResponseUtil.validate(response)) {
-                        $scope.classifyList.push(response.data);
+                    if (ResponseUtil.validate(response)) {
+                        $scope.load();
                         vm.showAdd = false;
                         vm.parentName = null;
                     } else {
@@ -64,6 +128,34 @@ angular.module('myApp')
                 function error(reason) {
                     HoldOn.close();
                     toastr.error("添加失败", "请稍后重试");
+                }
+            )
+        };
+
+        vm.update = function(classify) {
+            if (angular.isUndefined(classify.newName) || classify.newName == '') {
+                return;
+            }
+
+            HoldOn.open();
+
+            classify.name = classify.newName;
+
+            ClassifyService.update(
+                classify,
+                function success(response) {
+                    HoldOn.close();
+
+                    if (ResponseUtil.validate(response)) {
+                        $scope.load();
+                        classify.showRename = false;
+                    } else {
+                        toastr.error("修改失败", response.message);
+                    }
+                },
+                function error(reason) {
+                    HoldOn.close();
+                    toastr.error("修改失败", "请稍后重试");
                 }
             )
         };
@@ -84,7 +176,7 @@ angular.module('myApp')
                 function success(response) {
                     HoldOn.close();
 
-                    if(ResponseUtil.validate(response)) {
+                    if (ResponseUtil.validate(response)) {
                         $scope.classifyList.push(response.data);
                         vm.childName = null;
                         parent.showAdd = false;
